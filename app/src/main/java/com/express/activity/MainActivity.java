@@ -1,7 +1,9 @@
-package com.express;
+package com.express.activity;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+
+import com.express.R;
 
 public class MainActivity extends AppCompatActivity {
 

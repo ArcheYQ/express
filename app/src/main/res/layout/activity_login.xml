@@ -34,6 +34,7 @@
                 android:layout_width="25dp"
                 android:layout_height="25dp" />
             <EditText
+                android:id="@+id/et_login_account"
                 android:maxLines="1"
                 android:textSize="15sp"
                 android:textColor="#c3e7e6e6"
@@ -56,6 +57,8 @@
                 android:layout_width="25dp"
                 android:layout_height="25dp" />
             <EditText
+                android:id="@+id/et_login_password"
+                android:imeOptions="actionGo"
                 android:inputType="textPassword"
                 android:maxLines="1"
                 android:textSize="15sp"
