@@ -3,7 +3,6 @@ package com.express;
 import android.app.Application;
 import android.content.Context;
 import cn.bmob.v3.Bmob;
-
 /**
  * Created by hyc on 2017/7/25 16:53
  */
