@@ -4,13 +4,14 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.MotionEvent;
+import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
-
 import com.express.R;
 
 /**
@@ -24,10 +25,11 @@ public class SlidingMenu extends HorizontalScrollView {
     private ViewGroup mContent;
     private int mScreenWidth;
     //单位dP
-    private int mMenuRightPadding = 50;
+    private int mMenuRightPadding = 60;
     private boolean once = false;
     private boolean isOpen =false;
     private int mMenuWidth;
+    private View shadow;
     /**
      * 未使用自定义属性时， 调用
      * @param context
@@ -84,6 +86,7 @@ public class SlidingMenu extends HorizontalScrollView {
             mWapper = (LinearLayout) getChildAt(0);//因为Wapper=Menu+Content 所以不用再设置 getChildAt为获得控件群中的小控件0为下标
             mMenu = (ViewGroup) mWapper.getChildAt(0);
             mContent = (ViewGroup) mWapper.getChildAt(1);
+            shadow = mContent.getChildAt(1);
             mMenuWidth = mMenu.getLayoutParams().width=mScreenWidth - mMenuRightPadding;
             mContent.getLayoutParams().width=mScreenWidth;
             once = true;
@@ -98,48 +101,41 @@ public class SlidingMenu extends HorizontalScrollView {
     protected void onLayout(boolean changed, int l, int t, int r, int b) {
         super.onLayout(changed, l, t, r, b);
         if(changed){
-            this.scrollTo(mMenuWidth,0);}
+            this.scrollTo(mMenuWidth,0);
+        }
     }
-    float downX;
+
+
     @Override
     public boolean onTouchEvent(MotionEvent ev) {
         int action = ev.getAction();
         switch (action) {
-            case MotionEvent.ACTION_DOWN:
-                downX = getScrollX();
-                break;
             case MotionEvent.ACTION_UP://条件达到执行冒号内的操作
-                int distance = -(int) (getScrollX()-downX);//为隐藏在左边的宽度
-                if (distance > 0){
-                    if (isOpen){
-                        return false;
-                    }else {
-                        if (distance > mMenuWidth/6){
-                            this.smoothScrollTo(0,0);
+                if (!isOpen){
+                    if (getScrollX() < 5*mMenuWidth/6){
+                        this.smoothScrollTo(0,0);
                             isOpen = true;
-                            return true;
-                        }else {
-                            this.smoothScrollTo(mMenuWidth,0);
-                            return true;
-                        }
+                        return true;
+                    }else {
+                        this.smoothScrollTo(mMenuWidth,0);
+                            isOpen = false;
+                        return true;
                     }
                 }else {
-                    if(!isOpen){
-                        return false;
-                    }else{
-                        if(distance < -mMenuWidth/6){
-                            this.smoothScrollTo(mMenuWidth,0);
-                            isOpen = false;
-                            return true;
-                        }else {
-                            this.smoothScrollTo(0,0);
-                            return true;
-                        }
+                    if (getScrollX() > mMenuWidth/6){
+                        this.smoothScrollTo(mMenuWidth,0);
+                        isOpen = false;
+                        return true;
+                    }else {
+                        this.smoothScrollTo(0,0);
+                        isOpen = true;
+                        return true;
                     }
                 }
         }
         return super.onTouchEvent(ev);
     }
+
 
     public void openMenu(){
     if(isOpen)return;
@@ -160,5 +156,11 @@ public class SlidingMenu extends HorizontalScrollView {
         }else {
             openMenu();
         }
+    }
+
+    @Override
+    protected void onScrollChanged(int l, int t, int oldl, int oldt) {
+        shadow.getBackground().setAlpha(150-150*getScrollX()/mMenuWidth);
+        super.onScrollChanged(l, t, oldl, oldt);
     }
 }

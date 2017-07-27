@@ -105,6 +105,7 @@ public class LoginActivity extends AppCompatActivity {
             public void done(User u, BmobException e) {
                 if (e == null){
                     startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                    finish();
                     Toast.makeText(LoginActivity.this,"登录成功", Toast.LENGTH_SHORT).show();
                 }else {
                     Log.i("测试",e.getMessage());

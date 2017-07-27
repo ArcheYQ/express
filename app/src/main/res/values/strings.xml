@@ -1,3 +1,36 @@
 <resources>
     <string name="app_name">express</string>
+    <string-array name="dormitory">
+        <item name="dormitory_0">宿舍</item>
+        <item name="dormitory_1">1-5栋</item>
+        <item name="dormitory_2">6-10栋</item>
+        <item name="dormitory_3">11-15栋</item>
+        <item name="dormitory_4">16-20栋</item>
+        <item name="dormitory_5">21-23栋</item>
+        <item name="dormitory_6">24-29栋</item>
+        <item name="dormitory_7">30-32栋</item>
+        <item name="dormitory_8">33-35栋</item>
+    </string-array>
+    <string-array name="express_point">
+        <item name="point_0">快递点</item>
+        <item name="point_1">东门</item>
+        <item name="point_2">三食堂</item>
+        <item name="point_3">五食堂</item>
+        <item name="point_4">一食堂</item>
+        <item name="point_5">冶金楼</item>
+        <item name="point_6">唯品会</item>
+        <item name="point_7">聚美优品</item>
+        <item name="point_8">其他</item>
+    </string-array>
+    <string-array name="express_weight">
+        <item name="weight_0">重量</item>
+        <item name="weight_1">1-3瓶水</item>
+        <item name="weight_2">4-6瓶水</item>
+        <item name="weight_3">6瓶以上</item>
+
+    </string-array>
+
+    
+
+
 </resources>
