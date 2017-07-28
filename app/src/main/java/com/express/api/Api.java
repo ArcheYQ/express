@@ -15,3 +15,6 @@ public interface Api {
     @GET("get/login/{username}/{password}")
     Observable<UserBean> login(@Path("username") String username, @Path("password") String password);
 }
+
+
+
