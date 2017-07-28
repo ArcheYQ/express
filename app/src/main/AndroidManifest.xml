@@ -42,7 +42,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <!--<activity android:name=".activity.LoginActivity"></activity>-->
+        <activity android:name=".activity.LoginActivity" />
+        <activity android:name=".activity.PersonalActivity" />
+        <activity android:name=".activity.NicknameActivity" />
+        <activity android:name=".activity.ProfileActivity"></activity>
     </application>
 
 </manifest>
