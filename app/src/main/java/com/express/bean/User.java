@@ -20,6 +20,19 @@ public class User extends BmobUser {
     private String gender;
     private String userId;
     private String headPicThumb;
+    private String profile;
+
+    public String getProfile() {
+        return profile;
+    }
+
+    public void setProfile(String profile) {
+        this.profile = profile;
+    }
+
+    public User(){
+
+    }
 
     public User(UserBean.DataBean dataBean){
         number = dataBean.getStudentKH();
@@ -29,10 +42,10 @@ public class User extends BmobUser {
         depName = dataBean.getDep_name();
         className = dataBean.getClass_name();
         address = dataBean.getAddress();
-        headPic = dataBean.getHead_pic();
+        headPic = "http://218.75.197.121:8888"+dataBean.getHead_pic();
         gender  = dataBean.getSex();
         userId = dataBean.getUser_id();
-        headPicThumb = dataBean.getHead_pic_thumb();
+        headPicThumb = "http://218.75.197.121:8888"+dataBean.getHead_pic_thumb();
     }
 
     public String getNumber() {

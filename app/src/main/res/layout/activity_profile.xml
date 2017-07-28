@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.express.activity.NicknameActivity"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/toolbar_height">
+        <ImageView
+            android:id="@+id/iv_profile_back"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:src="@drawable/black_back"
+            android:layout_width="20dp"
+            android:layout_height="20dp" />
+        <TextView
+            android:textSize="16sp"
+            android:textColor="@color/share_text"
+            android:text="个人简介"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+        <TextView
+            android:id="@+id/tv_profile_complete"
+            android:textSize="15sp"
+            android:text="完成"
+            android:textColor="@color/share_text"
+            android:layout_marginRight="20dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+    <View
+        android:background="@color/part_linear_color"
+        android:layout_width="match_parent"
+        android:layout_height="1px"/>
+    <EditText
+        android:gravity="left"
+        android:layout_gravity="center_horizontal"
+        android:maxLength="75"
+        android:id="@+id/et_new_profile"
+        android:background="#77eaeaea"
+        android:layout_marginTop="15dp"
+        android:layout_width="300dp"
+        android:layout_height="150dp" />
+    <TextView
+        android:id="@+id/tv_new_profile"
+        android:layout_marginLeft="220dp"
+        android:text="还可以输入75个字"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>

@@ -28,7 +28,7 @@ import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 import rx.subscriptions.CompositeSubscription;
 
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends BaseActivity {
     protected Api apiStores;
     @Bind(R.id.et_login_account)
     EditText etLoginAccount;
@@ -51,6 +51,7 @@ public class LoginActivity extends AppCompatActivity {
                         || actionId == EditorInfo.IME_ACTION_DONE
                         || (event != null && KeyEvent.KEYCODE_ENTER == event.getKeyCode()
                         && KeyEvent.ACTION_DOWN == event.getAction())) {
+                    showProgressDialog();
                     login(etLoginAccount.getText().toString(),etLoginPassword.getText().toString());
                     return true;
                 }
@@ -106,7 +107,7 @@ public class LoginActivity extends AppCompatActivity {
                 if (e == null){
                     startActivity(new Intent(LoginActivity.this, MainActivity.class));
                     finish();
-                    Toast.makeText(LoginActivity.this,"登录成功", Toast.LENGTH_SHORT).show();
+                    dissmiss();
                 }else {
                     Log.i("测试",e.getMessage());
                 }
