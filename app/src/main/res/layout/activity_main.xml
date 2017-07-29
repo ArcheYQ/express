@@ -31,7 +31,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"/>
                 <android.support.design.widget.FloatingActionButton
-                    android:id="@+id/fb_add_activity"
+                    android:id="@+id/fb_publish"
                     android:layout_alignParentRight="true"
                     android:layout_marginBottom="35dp"
                     android:layout_marginRight="10dp"

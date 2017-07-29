@@ -2,12 +2,14 @@ package com.express.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -33,6 +35,10 @@ public class MainActivity extends AppCompatActivity {
     CircleImageView cvSlideTou;
     @Bind(R.id.tv_slide_nickname)
     TextView tvSlideNickname;
+    @Bind(R.id.ll_address)
+    LinearLayout llAddress;
+    @Bind(R.id.fb_publish)
+    FloatingActionButton fbPublish;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,15 +74,23 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    @OnClick({R.id.cv_slide_tou, R.id.tv_slide_nickname})
+    @OnClick({R.id.cv_slide_tou, R.id.tv_slide_nickname,R.id.ll_address,R.id.fb_publish})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.cv_slide_tou:
-                startActivity(new    Intent(this, PersonalActivity.class));
+                startActivity(new Intent(this, PersonalActivity.class));
                 break;
             case R.id.tv_slide_nickname:
-                startActivity(new Intent(this,NicknameActivity.class));
+                startActivity(new Intent(this, NicknameActivity.class));
+                break;
+            case R.id.ll_address:
+                startActivity(new Intent(this, AddressActivity.class));
+                break;
+            case R.id.fb_publish:
+                startActivity(new Intent(this, PublishActivity.class));
                 break;
         }
     }
+
+
 }

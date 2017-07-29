@@ -9,4 +9,5 @@
     <color name="color_accent">#8dc3e6</color>
     <color name="part_linear_color">#bababa</color>
     <color name="share_text">#ff000000</color>
+    <color name="going_unfinsh_color">#edebeb</color>
 </resources>
