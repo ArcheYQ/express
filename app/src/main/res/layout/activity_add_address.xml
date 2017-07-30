@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.express.activity.AddressActivity"
+    android:orientation="vertical">
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/tb_new_address"
+        android:background="@color/white"
+        android:elevation="5dp"
+        android:layout_width="match_parent"
+        android:layout_marginBottom="5dp"
+        android:layout_height="45dp">
+        <TextView
+            android:textColor="@color/share_text"
+            android:textSize="15sp"
+            android:text="新增收获地址"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </android.support.v7.widget.Toolbar>
+
+    <EditText
+        android:id="@+id/et_add_address_name"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:textSize="15dp"
+        android:background="@color/white"
+        android:layout_marginLeft="5dp"
+        android:hint="收件人"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_marginLeft="5dp"/>
+
+    <EditText
+        android:id="@+id/et_add_address_telephone"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginLeft="5dp"
+        android:background="@color/white"
+        android:hint="电话号码"
+        android:textSize="15dp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_marginLeft="5dp"/>
+    <EditText
+        android:id="@+id/et_address_add_accuracy"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:background="@color/white"
+        android:layout_marginLeft="5dp"
+        android:textSize="15dp"
+        android:hint="收货地址"
+        android:gravity="left"
+        android:paddingTop="5dp"/>
+    <Button
+        android:id="@+id/btn_add_address"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="70dp"
+        android:background="@drawable/btn_delete"
+        android:text="添加"
+        android:textColor="@color/white" />
+
+</LinearLayout>

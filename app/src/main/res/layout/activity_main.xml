@@ -27,7 +27,7 @@
                     android:layout_height="match_parent"/>
 
                 <View
-                    android:background="#939393"
+                    android:background="#636363"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"/>
                 <android.support.design.widget.FloatingActionButton

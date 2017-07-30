@@ -160,7 +160,7 @@ public class SlidingMenu extends HorizontalScrollView {
 
     @Override
     protected void onScrollChanged(int l, int t, int oldl, int oldt) {
-        shadow.getBackground().setAlpha(150-150*getScrollX()/mMenuWidth);
+        shadow.getBackground().setAlpha(180-180*getScrollX()/mMenuWidth);
         super.onScrollChanged(l, t, oldl, oldt);
     }
 }

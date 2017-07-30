@@ -9,6 +9,8 @@ import com.imnjh.imagepicker.PickerConfig;
 import com.imnjh.imagepicker.SImagePicker;
 import com.zxy.tiny.Tiny;
 
+import org.litepal.LitePal;
+
 import cn.bmob.v3.Bmob;
 /**
  * Created by hyc on 2017/7/25 16:53
@@ -27,6 +29,7 @@ public class ExpressApplication extends Application {
         super.onCreate();
         Bmob.initialize(this,"1258d8b2a3aad308ba4b2214dc870d7b");
         context=getApplicationContext();
+        LitePal.initialize(this);
         Tiny.getInstance().init(this);
         SImagePicker.init(new PickerConfig.Builder().setAppContext(this)
                 .setImageLoader(new GlideImageLoader())

@@ -12,6 +12,8 @@
         android:layout_height="match_parent">
         <android.support.v7.widget.Toolbar
             android:id="@+id/tb_publish"
+            android:elevation="5dp"
+            android:layout_marginBottom="5dp"
             android:background="@color/white"
             android:layout_width="match_parent"
             android:layout_height="45dp">
@@ -24,10 +26,7 @@
                 android:layout_height="wrap_content" />
         </android.support.v7.widget.Toolbar>
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1px"
-            android:background="@color/part_linear_color"/>
+
         <LinearLayout
             android:orientation="vertical"
             android:layout_marginTop="5dp"
