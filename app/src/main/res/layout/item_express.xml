@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:paddingTop="2dp"
+    android:layout_height="wrap_content">
+
+    <android.support.v7.widget.CardView
+        app:cardCornerRadius="5dp"
+        app:cardBackgroundColor="@color/white"
+        app:cardElevation="5dp"
+        android:layout_marginLeft="7dp"
+        android:layout_marginRight="7dp"
+        android:layout_marginBottom="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent">
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/cv_item_tou"
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
+                    android:src="@drawable/pig"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginLeft="10dp"
+                    />
+                <TextView
+                    android:id="@+id/tv_item_nickname"
+                    android:textSize="15dp"
+                    android:layout_toRightOf="@+id/cv_item_tou"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="小仙女"/>
+                <TextView
+                    android:id="@+id/tv_item_time"
+                    android:layout_marginRight="10dp"
+                    android:layout_alignParentRight="true"
+                    android:textSize="12sp"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginLeft="11dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="12:25"/>
+                <ImageView
+                    android:id="@+id/iv_huangguan"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:layout_marginTop="33dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_toRightOf="@id/cv_item_tou"
+                    android:src="@drawable/yellow"/>
+                <ImageView
+                    android:id="@+id/iv_level"
+                    android:layout_marginLeft="3dp"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_marginTop="30dp"
+                    android:src="@drawable/ic_userlevel_6"
+                    android:layout_toRightOf="@id/iv_huangguan"/>
+
+
+            </RelativeLayout>
+            <LinearLayout
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <TextView
+                    android:layout_marginLeft="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="详细地址："
+                    />
+                <TextView
+                    android:id="@+id/tv_item_get_address"
+                    android:text="一食堂31栋324"
+                    android:layout_marginTop="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="5dp"
+                    android:text="快递点名称：" />
+
+                <TextView
+                    android:id="@+id/tv_point_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="东门一号店" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginBottom="5dp"
+                android:gravity="right"
+                android:layout_marginRight="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:id="@+id/iv_water6"
+                    android:layout_width="20dp"
+                    android:layout_height="25dp"
+                    android:src="@drawable/water"/>
+                <ImageView
+                    android:id="@+id/iv_water5"
+                    android:layout_width="20dp"
+                    android:layout_height="25dp"
+                    android:src="@drawable/water"/>
+                <ImageView
+                    android:id="@+id/iv_water4"
+                    android:layout_width="20dp"
+                    android:layout_height="25dp"
+                    android:src="@drawable/water"/>
+                <ImageView
+                    android:id="@+id/iv_water3"
+                    android:layout_width="20dp"
+                    android:layout_height="25dp"
+                    android:src="@drawable/water"/>
+
+                <ImageView
+                    android:id="@+id/iv_water2"
+                    android:layout_width="20dp"
+                    android:layout_height="25dp"
+                    android:src="@drawable/water" />
+
+                <ImageView
+                    android:id="@+id/iv_water1"
+                    android:layout_width="20dp"
+                    android:layout_height="25dp"
+                    android:src="@drawable/water"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+         
+    </android.support.v7.widget.CardView>
+
+</LinearLayout>

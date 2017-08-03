@@ -45,7 +45,11 @@
         <activity android:name=".activity.LoginActivity" />
         <activity android:name=".activity.PersonalActivity" />
         <activity android:name=".activity.NicknameActivity" />
-        <activity android:name=".activity.ProfileActivity"></activity>
+        <activity android:name=".activity.ProfileActivity" />
+        <activity android:name=".activity.PublishActivity" />
+        <activity android:name=".activity.AddressActivity" />
+        <activity android:name=".activity.AddAddressActivity" />
+        <activity android:name=".activity.FeedbackActivity"></activity>
     </application>
 
 </manifest>

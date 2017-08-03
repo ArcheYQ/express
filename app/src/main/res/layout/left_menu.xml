@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <ImageView
+        android:id="@+id/iv_left_background"
         android:src="@drawable/bg"
         android:scaleType="centerCrop"
         android:layout_width="match_parent"
@@ -96,6 +97,7 @@
                 android:layout_height="match_parent" />
         </LinearLayout>
         <LinearLayout
+            android:id="@+id/ll_feedback"
             android:layout_marginTop="10dp"
             android:orientation="horizontal"
             android:layout_width="match_parent"
@@ -114,7 +116,25 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent" />
         </LinearLayout>
-
+        <LinearLayout
+            android:id="@+id/ll_address"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="40dp">
+            <ImageView
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/address"
+                android:layout_width="25dp"
+                android:layout_height="25dp" />
+            <TextView
+                android:textSize="16sp"
+                android:layout_marginLeft="15dp"
+                android:gravity="center_vertical"
+                android:text="收货地址"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent" />
+        </LinearLayout>
     </LinearLayout>
     <ImageView
         android:layout_marginBottom="16dp"

@@ -2,18 +2,30 @@ package com.express.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.express.R;
 import com.express.adapter.ExpressAdapter;
+import com.express.bean.ExpressHelp;
 import com.express.bean.User;
+import com.express.view.SlidingMenu;
+import com.scwang.smartrefresh.header.DeliveryHeader;
+import com.scwang.smartrefresh.layout.SmartRefreshLayout;
+import com.scwang.smartrefresh.layout.api.RefreshLayout;
+import com.scwang.smartrefresh.layout.constant.SpinnerStyle;
+import com.scwang.smartrefresh.layout.footer.BallPulseFooter;
+import com.scwang.smartrefresh.layout.listener.OnLoadmoreListener;
+import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,6 +45,18 @@ public class MainActivity extends AppCompatActivity {
     CircleImageView cvSlideTou;
     @Bind(R.id.tv_slide_nickname)
     TextView tvSlideNickname;
+    @Bind(R.id.ll_address)
+    LinearLayout llAddress;
+    @Bind(R.id.fb_publish)
+    FloatingActionButton fbPublish;
+    @Bind(R.id.iv_left_background)
+    ImageView ivLeftBackground;
+    @Bind(R.id.id_menu)
+    SlidingMenu idMenu;
+    @Bind(R.id.ll_side)
+    LinearLayout llSide;
+    @Bind(R.id.srl_main)
+    SmartRefreshLayout srlMain;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,17 +66,49 @@ public class MainActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         rvMain.setLayoutManager(new LinearLayoutManager(this));
         rvMain.setItemAnimator(new DefaultItemAnimator());
-        List<String> list = new ArrayList<>();
-        list.add("筛选");
+        List<ExpressHelp> list = new ArrayList<>();
+        for (int i = 0; i < 30; i++) {
+            list.add(new ExpressHelp());
+        }
         rvMain.setAdapter(new ExpressAdapter(list));
+        initView();
         initData();
+    }
 
+    private void initView() {
+        srlMain.setOnRefreshListener(new OnRefreshListener() {
+            @Override
+            public void onRefresh(RefreshLayout refreshlayout) {
+                refreshlayout.finishRefresh(2000);
+            }
+        });
+        srlMain.setOnLoadmoreListener(new OnLoadmoreListener() {
+            @Override
+            public void onLoadmore(RefreshLayout refreshlayout) {
+                refreshlayout.finishLoadmore(2000);
+            }
+        });
+        srlMain.setRefreshHeader(new DeliveryHeader(this));
+        srlMain.setHeaderHeight(150);
+        srlMain.setPrimaryColors(getColor(R.color.blue_balloon));
+        srlMain.setRefreshFooter(new BallPulseFooter(this).setSpinnerStyle(SpinnerStyle.Scale));
+    }
+
+
+    public void loadBackground() {
+        String background = BmobUser.getCurrentUser(User.class).getBackground();
+        if (!TextUtils.isEmpty(background)) {
+            Glide.with(this)
+                    .load(background)
+                    .into(ivLeftBackground);
+        }
     }
 
     @Override
     protected void onResume() {
         super.onResume();
         initData();
+        loadBackground();
     }
 
     private void initData() {
@@ -68,15 +124,26 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    @OnClick({R.id.cv_slide_tou, R.id.tv_slide_nickname})
+    @OnClick({R.id.cv_slide_tou, R.id.tv_slide_nickname, R.id.ll_address, R.id.fb_publish, R.id.ll_feedback})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.cv_slide_tou:
-                startActivity(new    Intent(this, PersonalActivity.class));
+                startActivity(new Intent(this, PersonalActivity.class));
                 break;
             case R.id.tv_slide_nickname:
-                startActivity(new Intent(this,NicknameActivity.class));
+                startActivity(new Intent(this, NicknameActivity.class));
+                break;
+            case R.id.ll_address:
+                startActivity(new Intent(this, AddressActivity.class));
+                break;
+            case R.id.fb_publish:
+                startActivity(new Intent(this, PublishActivity.class));
+                break;
+            case R.id.ll_feedback:
+                startActivity(new Intent(this, FeedbackActivity.class));
                 break;
         }
     }
+
+
 }

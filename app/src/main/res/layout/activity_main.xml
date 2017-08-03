@@ -4,47 +4,63 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:fab="http://schemas.android.com/apk/res-auto"
     tools:context="com.express.activity.MainActivity">
-
-    <com.express.view.SlidingMenu
-        android:id="@+id/id_menu"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        rightPadding="300dp">
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
-            <include layout="@layout/left_menu"/>
-            <RelativeLayout
+            <com.express.view.SlidingMenu
+                android:id="@+id/id_menu"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@color/white">
-                <android.support.v7.widget.RecyclerView
-                    android:id="@+id/rv_main"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"/>
-
-                <View
-                    android:background="#939393"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"/>
-                <android.support.design.widget.FloatingActionButton
-                    android:id="@+id/fb_add_activity"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginBottom="35dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_alignParentBottom="true"
-                    android:src="@drawable/add"
-                    app:fabSize="auto"
+                rightPadding="300dp">
+                <LinearLayout
                     android:layout_width="wrap_content"
-                    app:backgroundTint="@color/white"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+                    <include layout="@layout/left_menu"/>
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@color/white">
+                        <com.scwang.smartrefresh.layout.SmartRefreshLayout
+                            android:id="@+id/srl_main"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+                            <android.support.v7.widget.RecyclerView
+                                android:id="@+id/rv_main"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"/>
+                        </com.scwang.smartrefresh.layout.SmartRefreshLayout>
 
-            </RelativeLayout>
-        </LinearLayout>
-    </com.express.view.SlidingMenu>
+                        <View
+                            android:background="#636363"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"/>
+                        <android.support.design.widget.FloatingActionButton
+                            android:id="@+id/fb_publish"
+                            android:layout_alignParentRight="true"
+                            android:layout_marginBottom="35dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_alignParentBottom="true"
+                            android:src="@drawable/add"
+                            app:fabSize="auto"
+                            android:layout_width="wrap_content"
+                            app:backgroundTint="@color/white"
+                            android:layout_height="wrap_content" />
+                        <RelativeLayout
+                            android:layout_alignParentBottom="true"
+                            android:layout_width="match_parent"
+                            android:layout_height="30dp"
+                            android:background="#98f7f7f7">
+                            <ImageView
+                                android:layout_width="15dp"
+                                android:layout_height="15dp"
+                                android:layout_centerInParent="true"
+                                android:src="@drawable/refresh"
+                                />
+                        </RelativeLayout>
+
+                    </RelativeLayout>
+                </LinearLayout>
+            </com.express.view.SlidingMenu>
+
     <LinearLayout
         android:id="@+id/ll_side"
         android:orientation="vertical"

@@ -30,7 +30,6 @@
 
     </string-array>
 
-    
-
+    <string name="err_no_net">网络不给力/(ㄒoㄒ)/~~</string>
 
 </resources>
