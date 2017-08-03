@@ -1,16 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:fitsSystemWindows="false"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.express.activity.PersonalActivity">
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/tb_personal"
-        android:layout_width="match_parent"
-        android:layout_height="45dp">
-    </android.support.v7.widget.Toolbar>
+
     <ImageView
         android:id="@+id/iv_personal_bg"
         android:src="@drawable/bg"
@@ -387,10 +382,26 @@
                     android:layout_height="20dp"/>
             </LinearLayout>
 
+
         </RelativeLayout>
 
     </android.support.v4.widget.NestedScrollView>
 
-
-
+    <android.support.v7.widget.Toolbar
+        android:paddingTop="12dp"
+        android:layout_alignParentTop="true"
+        android:elevation="5dp"
+        android:background="#339f9f9f"
+        android:id="@+id/tb_personal"
+        android:layout_width="match_parent"
+        android:layout_height="60dp">
+        <TextView
+            android:paddingTop="12dp"
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            android:text="个人信息"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </android.support.v7.widget.Toolbar>
 </RelativeLayout>

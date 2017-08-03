@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <ImageView
+        android:id="@+id/iv_left_background"
         android:src="@drawable/bg"
         android:scaleType="centerCrop"
         android:layout_width="match_parent"
@@ -96,6 +97,7 @@
                 android:layout_height="match_parent" />
         </LinearLayout>
         <LinearLayout
+            android:id="@+id/ll_feedback"
             android:layout_marginTop="10dp"
             android:orientation="horizontal"
             android:layout_width="match_parent"

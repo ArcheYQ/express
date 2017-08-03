@@ -7,6 +7,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -68,6 +70,8 @@ public class PersonalActivity extends BaseActivity {
 
     public static final String AVATAR_FILE_NAME = "avatar.png";
 
+    public static final int REQUEST_CODE_IMAGE = 101;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -75,7 +79,89 @@ public class PersonalActivity extends BaseActivity {
         setContentView(R.layout.activity_personal);
         ButterKnife.bind(this);
         initData();
+        setToolBar(R.id.tb_personal);
+        initWhiteHome();
+        loadBackground();
     }
+
+    public void loadBackground(){
+        String background = BmobUser.getCurrentUser(User.class).getBackground();
+        if (!TextUtils.isEmpty(background)){
+            Glide.with(this)
+                    .load(background)
+                    .into(ivPersonalBg);
+        }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_personal,menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == R.id.update_background){
+            SImagePicker
+                    .from(this)
+                    .maxCount(1)
+                    .rowCount(3)
+                    .showCamera(true)
+                    .pickMode(SImagePicker.MODE_IMAGE)
+                    .forResult(REQUEST_CODE_IMAGE);
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    private void updateBackground(String path) {
+        showProgressDialog();
+        Tiny.getInstance().source(path).asFile().withOptions(new Tiny.FileCompressOptions()).compress(new FileCallback() {
+            @Override
+            public void callback(boolean isSuccess, String outfile) {
+                if (isSuccess){
+                    final BmobFile bmobFile = new BmobFile(new File(outfile));
+                    bmobFile.uploadblock(new UploadFileListener() {
+                        @Override
+                        public void done(BmobException e) {
+                            if (e == null){
+                                synchroUser(bmobFile.getUrl());
+                            }else {
+                                dissmiss();
+                                if (e.getErrorCode()==9016){
+                                    Toast.makeText(mActivity, "网络不给力", Toast.LENGTH_SHORT).show();
+                                }else {
+                                    Toast.makeText(mActivity,e.getMessage(), Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        }
+                    });
+                }else {
+                    dissmiss();
+                    Toast.makeText(mActivity, "图片压缩失败", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+    }
+
+    public void synchroUser(String path){
+        User newUser = new User();
+        newUser.setBackground(path);
+        User bmobUser = BmobUser.getCurrentUser(User.class);
+        newUser.update(bmobUser.getObjectId(),new UpdateListener() {
+            @Override
+            public void done(BmobException e) {
+                dissmiss();
+                if(e==null){
+                    loadBackground();
+                    Toast.makeText(mActivity,"修改成功", Toast.LENGTH_SHORT).show();
+                }else{
+                    Toast.makeText(mActivity,e.getMessage(),Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+    }
+
     @Override
     protected void onResume() {
         super.onResume();
@@ -155,6 +241,10 @@ public class PersonalActivity extends BaseActivity {
                     }
                 }
             });
+        }else if (resultCode == Activity.RESULT_OK && requestCode == REQUEST_CODE_IMAGE){
+            final ArrayList<String> pathList =
+                    data.getStringArrayListExtra(PhotoPickerActivity.EXTRA_RESULT_SELECTION);
+            updateBackground(pathList.get(0));
         }
     }
 

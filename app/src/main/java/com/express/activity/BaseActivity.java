@@ -119,6 +119,17 @@ public class BaseActivity extends AppCompatActivity {
             actionBar.setTitle("");
         }
     }
+    public void initWhiteHome(){
+        if (mToolbar != null) {
+            setSupportActionBar(mToolbar);
+        }
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setHomeAsUpIndicator(R.drawable.white_back);
+            actionBar.setDisplayHomeAsUpEnabled(true);
+            actionBar.setTitle("");
+        }
+    }
 
     public void initToolBarText(int tvId,String title,int res) {
         if (mToolbar != null) {

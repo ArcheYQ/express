@@ -21,6 +21,7 @@ public class User extends BmobUser {
     private String userId;
     private String headPicThumb;
     private String profile;
+    private String background;
 
     public String getProfile() {
         return profile;
@@ -134,5 +135,13 @@ public class User extends BmobUser {
 
     public void setHeadPicThumb(String headPicThumb) {
         this.headPicThumb = headPicThumb;
+    }
+
+    public String getBackground() {
+        return background;
+    }
+
+    public void setBackground(String background) {
+        this.background = background;
     }
 }

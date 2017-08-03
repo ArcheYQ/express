@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
-import android.util.Log;
 import android.util.TypedValue;
 import android.view.MotionEvent;
 import android.view.View;
@@ -12,6 +11,7 @@ import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
+import com.express.ExpressApplication;
 import com.express.R;
 
 /**
@@ -24,23 +24,25 @@ public class SlidingMenu extends HorizontalScrollView {
     private ViewGroup mMenu;
     private ViewGroup mContent;
     private int mScreenWidth;
-    //单位dP
     private int mMenuRightPadding = 60;
     private boolean once = false;
     private boolean isOpen =false;
     private int mMenuWidth;
     private View shadow;
+
     /**
-     * 未使用自定义属性时， 调用
+     * 未使用自定义属性时，调用
      * @param context
      * @param attrs
      */
     public SlidingMenu(Context context, AttributeSet attrs) {
         this(context, attrs,0);
+
     }
 
     public SlidingMenu(Context context) {
         this(context,null);
+
     }
 
     /**
@@ -71,8 +73,8 @@ public class SlidingMenu extends HorizontalScrollView {
         //PD转换为PX
         mMenuRightPadding = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,mMenuRightPadding,context
                 .getResources().getDisplayMetrics());
-    }
 
+    }
 
     /**
      * 设置子VIEW的宽和高和自己的宽和高
@@ -108,33 +110,42 @@ public class SlidingMenu extends HorizontalScrollView {
 
     @Override
     public boolean onTouchEvent(MotionEvent ev) {
+
         int action = ev.getAction();
         switch (action) {
             case MotionEvent.ACTION_UP://条件达到执行冒号内的操作
                 if (!isOpen){
                     if (getScrollX() < 5*mMenuWidth/6){
                         this.smoothScrollTo(0,0);
-                            isOpen = true;
-                        return true;
+                        isOpen = true;
                     }else {
                         this.smoothScrollTo(mMenuWidth,0);
-                            isOpen = false;
-                        return true;
+                        isOpen = false;
                     }
                 }else {
                     if (getScrollX() > mMenuWidth/6){
                         this.smoothScrollTo(mMenuWidth,0);
                         isOpen = false;
-                        return true;
                     }else {
                         this.smoothScrollTo(0,0);
                         isOpen = true;
-                        return true;
                     }
+                }
+
+                if (ev.getY()<dip2px(ExpressApplication.getContext(),150)){
+                    return false;
+                }else {
+                    return true;
                 }
         }
         return super.onTouchEvent(ev);
     }
+
+    public static int dip2px(Context context, float dpValue) {
+        final float scale = context.getResources().getDisplayMetrics().density;
+        return (int) (dpValue * scale + 0.5f);
+    }
+
 
 
     public void openMenu(){
@@ -163,4 +174,7 @@ public class SlidingMenu extends HorizontalScrollView {
         shadow.getBackground().setAlpha(180-180*getScrollX()/mMenuWidth);
         super.onScrollChanged(l, t, oldl, oldt);
     }
+
+
+
 }

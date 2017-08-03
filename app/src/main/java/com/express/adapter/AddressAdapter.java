@@ -3,10 +3,8 @@ package com.express.adapter;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
-
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.express.R;
@@ -57,6 +55,12 @@ public class AddressAdapter extends BaseQuickAdapter<Address> {
 
 
 
+
+        /**
+         * 设为默认地址 首先去掉一开始设置过的地址 再更改当前选择的
+         */
+
+
         final CheckBox checkBox = baseViewHolder.getView(R.id.cb_set_default);
         if (address.isDefault()){
             checkBox.setChecked(true);
@@ -82,8 +86,6 @@ public class AddressAdapter extends BaseQuickAdapter<Address> {
                     values.put("isDefault",true);
                     DataSupport.update(Address.class, values, address.getId());
                 }
-
-
             }
         });
 
