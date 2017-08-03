@@ -4,7 +4,9 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.util.TypedValue;
+import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,6 +31,7 @@ public class SlidingMenu extends HorizontalScrollView {
     private boolean isOpen =false;
     private int mMenuWidth;
     private View shadow;
+    private GestureDetector mGestureDetector;
 
     /**
      * 未使用自定义属性时，调用
@@ -37,11 +40,15 @@ public class SlidingMenu extends HorizontalScrollView {
      */
     public SlidingMenu(Context context, AttributeSet attrs) {
         this(context, attrs,0);
+        mGestureDetector = new GestureDetector(new HScrollDetector());
+        setFadingEdgeLength(0);
 
     }
 
     public SlidingMenu(Context context) {
         this(context,null);
+        mGestureDetector = new GestureDetector(new HScrollDetector());
+        setFadingEdgeLength(0);
 
     }
 
@@ -73,7 +80,12 @@ public class SlidingMenu extends HorizontalScrollView {
         //PD转换为PX
         mMenuRightPadding = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,mMenuRightPadding,context
                 .getResources().getDisplayMetrics());
-
+        mGestureDetector = new GestureDetector(new HScrollDetector());
+        setFadingEdgeLength(0);
+    }
+    @Override
+    public boolean onInterceptTouchEvent(MotionEvent ev) {
+        return super.onInterceptTouchEvent(ev) && mGestureDetector.onTouchEvent(ev);
     }
 
     /**
@@ -174,6 +186,18 @@ public class SlidingMenu extends HorizontalScrollView {
         shadow.getBackground().setAlpha(180-180*getScrollX()/mMenuWidth);
         super.onScrollChanged(l, t, oldl, oldt);
     }
+
+    //手势监听
+    class HScrollDetector extends GestureDetector.SimpleOnGestureListener {
+        @Override
+        public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY) {
+            if(Math.abs(distanceX) > Math.abs(distanceY)) {
+                return true;
+            }
+            return false;
+        }
+    }
+
 
 
 

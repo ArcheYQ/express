@@ -52,6 +52,8 @@ dependencies {
     compile 'cn.bmob.android:bmob-im:2.0.6@aar'
     compile 'com.sackcentury:shinebutton:0.1.9'
     compile 'com.squareup.picasso:picasso:2.3.2'
+    compile 'com.scwang.smartrefresh:SmartRefreshLayout:1.0.3-alpha-6'
+    compile 'com.scwang.smartrefresh:SmartRefreshHeader:1.0.3-alpha-6'
     compile 'jp.wasabeef:glide-transformations:2.0.1'
     compile 'org.litepal.android:core:1.5.1'
     compile 'com.nineoldandroids:library:2.4.0'

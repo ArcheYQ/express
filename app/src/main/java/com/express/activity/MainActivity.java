@@ -12,14 +12,24 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
 import com.bumptech.glide.Glide;
 import com.express.R;
 import com.express.adapter.ExpressAdapter;
 import com.express.bean.ExpressHelp;
 import com.express.bean.User;
 import com.express.view.SlidingMenu;
+import com.scwang.smartrefresh.header.DeliveryHeader;
+import com.scwang.smartrefresh.layout.SmartRefreshLayout;
+import com.scwang.smartrefresh.layout.api.RefreshLayout;
+import com.scwang.smartrefresh.layout.constant.SpinnerStyle;
+import com.scwang.smartrefresh.layout.footer.BallPulseFooter;
+import com.scwang.smartrefresh.layout.listener.OnLoadmoreListener;
+import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
+
 import java.util.ArrayList;
 import java.util.List;
+
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -45,6 +55,8 @@ public class MainActivity extends AppCompatActivity {
     SlidingMenu idMenu;
     @Bind(R.id.ll_side)
     LinearLayout llSide;
+    @Bind(R.id.srl_main)
+    SmartRefreshLayout srlMain;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,7 +71,27 @@ public class MainActivity extends AppCompatActivity {
             list.add(new ExpressHelp());
         }
         rvMain.setAdapter(new ExpressAdapter(list));
+        initView();
         initData();
+    }
+
+    private void initView() {
+        srlMain.setOnRefreshListener(new OnRefreshListener() {
+            @Override
+            public void onRefresh(RefreshLayout refreshlayout) {
+                refreshlayout.finishRefresh(2000);
+            }
+        });
+        srlMain.setOnLoadmoreListener(new OnLoadmoreListener() {
+            @Override
+            public void onLoadmore(RefreshLayout refreshlayout) {
+                refreshlayout.finishLoadmore(2000);
+            }
+        });
+        srlMain.setRefreshHeader(new DeliveryHeader(this));
+        srlMain.setHeaderHeight(150);
+        srlMain.setPrimaryColors(getColor(R.color.blue_balloon));
+        srlMain.setRefreshFooter(new BallPulseFooter(this).setSpinnerStyle(SpinnerStyle.Scale));
     }
 
 
