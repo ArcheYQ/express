@@ -12,12 +12,14 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.express.R;
 import com.express.adapter.ExpressAdapter;
 import com.express.bean.ExpressHelp;
 import com.express.bean.User;
+import com.express.util.ExpressUtil;
 import com.express.view.SlidingMenu;
 import com.scwang.smartrefresh.header.DeliveryHeader;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
@@ -57,6 +59,8 @@ public class MainActivity extends AppCompatActivity {
     LinearLayout llSide;
     @Bind(R.id.srl_main)
     SmartRefreshLayout srlMain;
+    private int page = 0;
+    ExpressAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,10 +71,9 @@ public class MainActivity extends AppCompatActivity {
         rvMain.setLayoutManager(new LinearLayoutManager(this));
         rvMain.setItemAnimator(new DefaultItemAnimator());
         List<ExpressHelp> list = new ArrayList<>();
-        for (int i = 0; i < 30; i++) {
-            list.add(new ExpressHelp());
-        }
-        rvMain.setAdapter(new ExpressAdapter(list));
+        srlMain.autoRefresh();
+        adapter = new ExpressAdapter(list,this);
+        rvMain.setAdapter(adapter);
         initView();
         initData();
     }
@@ -78,17 +81,42 @@ public class MainActivity extends AppCompatActivity {
     private void initView() {
         srlMain.setOnRefreshListener(new OnRefreshListener() {
             @Override
-            public void onRefresh(RefreshLayout refreshlayout) {
-                refreshlayout.finishRefresh(2000);
+            public void onRefresh(final RefreshLayout refreshlayout) {
+                ExpressUtil.getInstance().queryExpressHelp(0, new ExpressUtil.QueryListener() {
+                    @Override
+                    public void complete(List<ExpressHelp> expressHelps) {
+                        adapter.setList(expressHelps);
+                        page = 1;
+                        refreshlayout.finishRefresh();
+                    }
+
+                    @Override
+                    public void fail(String error) {
+                        refreshlayout.finishRefresh();
+                        Toast.makeText(MainActivity.this,error, Toast.LENGTH_SHORT).show();
+                    }
+                });
             }
         });
         srlMain.setOnLoadmoreListener(new OnLoadmoreListener() {
             @Override
-            public void onLoadmore(RefreshLayout refreshlayout) {
-                refreshlayout.finishLoadmore(2000);
+            public void onLoadmore(final RefreshLayout refreshlayout) {
+                ExpressUtil.getInstance().queryExpressHelp(page, new ExpressUtil.QueryListener() {
+                    @Override
+                    public void complete(List<ExpressHelp> expressHelps) {
+                        refreshlayout.finishLoadmore();
+                        adapter.setList(expressHelps);
+                        page++;
+                    }
+
+                    @Override
+                    public void fail(String error) {
+                        refreshlayout.finishLoadmore();
+                        Toast.makeText(MainActivity.this, error, Toast.LENGTH_SHORT).show();
+                    }
+                });
             }
-        });
-        srlMain.setRefreshHeader(new DeliveryHeader(this));
+        }).setRefreshHeader(new DeliveryHeader(this));
         srlMain.setHeaderHeight(150);
         srlMain.setPrimaryColors(getColor(R.color.blue_balloon));
         srlMain.setRefreshFooter(new BallPulseFooter(this).setSpinnerStyle(SpinnerStyle.Scale));

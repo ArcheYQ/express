@@ -22,6 +22,14 @@ public class User extends BmobUser {
     private String headPicThumb;
     private String profile;
     private String background;
+    private String sum;
+    public String getSum() {
+        return sum;
+    }
+
+    public void setSum(String sum) {
+        this.sum = sum;
+    }
 
     public String getProfile() {
         return profile;
@@ -47,6 +55,7 @@ public class User extends BmobUser {
         gender  = dataBean.getSex();
         userId = dataBean.getUser_id();
         headPicThumb = "http://218.75.197.121:8888"+dataBean.getHead_pic_thumb();
+        sum = ""+0;
     }
 
     public String getNumber() {

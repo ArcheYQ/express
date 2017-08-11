@@ -40,7 +40,7 @@ public class ExpressUtil {
         query.setSkip(10*page);
         query.include("user");
         query.order("-createdAt");
-        query.addWhereEqualTo("state",false);
+        query.addWhereDoesNotExists("HelpUser");
         query.findObjects(new FindListener<ExpressHelp>() {
             @Override
             public void done(List<ExpressHelp> data, BmobException e) {

@@ -2,21 +2,18 @@ package com.express.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.express.R;
 import com.express.api.Api;
 import com.express.bean.User;
 import com.express.bean.UserBean;
 import com.express.http.ApiCallback;
 import com.express.http.ApiClient;
-
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import cn.bmob.v3.exception.BmobException;

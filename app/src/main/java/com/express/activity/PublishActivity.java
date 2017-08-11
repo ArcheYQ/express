@@ -150,7 +150,7 @@ public class PublishActivity extends BaseActivity {
                     expressHelp.setAddressName(etAddressName.getText().toString());
                     expressHelp.setPointName(etPointName.getText().toString());
                     expressHelp.setRemarks(etRemarks.getText().toString());
-                    expressHelp.setState(false);
+                    expressHelp.setHelpUser(null);
                     expressHelp.setPublishTime(System.currentTimeMillis());
                     showProgressDialog();
                     expressHelp.save(new SaveListener<String>() {

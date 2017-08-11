@@ -1,5 +1,8 @@
 package com.express.adapter;
 
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
@@ -8,12 +11,12 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.express.ExpressApplication;
 import com.express.R;
+import com.express.activity.DetailsActivity;
 import com.express.bean.ExpressHelp;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import butterknife.Bind;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 /**
@@ -35,6 +38,7 @@ public class ExpressViewHolder extends RecyclerView.ViewHolder {
     ImageView ivWater3;
     ImageView ivWater2;
     ImageView ivWater1;
+    View itemView;
 
     public ExpressViewHolder(View itemView) {
         super(itemView);
@@ -51,9 +55,10 @@ public class ExpressViewHolder extends RecyclerView.ViewHolder {
         ivWater4 = (ImageView) itemView.findViewById(R.id.iv_water4);
         ivWater5 = (ImageView) itemView.findViewById(R.id.iv_water5);
         ivWater6 = (ImageView) itemView.findViewById(R.id.iv_water6);
+        this.itemView=itemView;
     }
 
-    public void load(ExpressHelp expressHelp) {
+    public void load(final Context context, final ExpressHelp expressHelp) {
         Glide.with(ExpressApplication.getContext())
                 .load(expressHelp.getUser().getHeadPicThumb())
                 .into(cvItemTou);
@@ -62,7 +67,16 @@ public class ExpressViewHolder extends RecyclerView.ViewHolder {
         tvItemGetAddress.setText(expressHelp.getAddressAccuracy());
         SimpleDateFormat format = new SimpleDateFormat("MM-dd-hh:mm");
         tvItemTime.setText(format.format(new Date(expressHelp.getPublishTime())));
-
+        itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, DetailsActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("express",expressHelp);
+                intent.putExtras(bundle);
+                context.startActivity(intent);
+            }
+        });
     }
 
 }

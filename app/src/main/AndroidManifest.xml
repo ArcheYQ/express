@@ -49,7 +49,8 @@
         <activity android:name=".activity.PublishActivity" />
         <activity android:name=".activity.AddressActivity" />
         <activity android:name=".activity.AddAddressActivity" />
-        <activity android:name=".activity.FeedbackActivity"></activity>
+        <activity android:name=".activity.FeedbackActivity" />
+        <activity android:name=".activity.DetailsActivity"></activity>
     </application>
 
 </manifest>

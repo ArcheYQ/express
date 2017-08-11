@@ -1,5 +1,7 @@
 package com.express.bean;
 
+import java.io.Serializable;
+
 import cn.bmob.v3.BmobObject;
 
 /**
@@ -7,7 +9,7 @@ import cn.bmob.v3.BmobObject;
  */
 
 
-public class ExpressHelp extends BmobObject{
+public class ExpressHelp extends BmobObject implements Serializable{
     /**
      *发布者
      */
@@ -53,9 +55,9 @@ public class ExpressHelp extends BmobObject{
      */
     private String weight;
     /**
-     * 状态
+     * 帮助用户
      */
-    private Boolean state;
+    private User HelpUser;
     /**
      * 发布时间
      */
@@ -105,9 +107,9 @@ public class ExpressHelp extends BmobObject{
 
     public void setWeight(String weight){this.weight = weight;}
 
-    public Boolean getState() {return state;}
+    public User getHelpUser(){return HelpUser;}
 
-    public void setState(Boolean state) {this.state = state;}
+    public void setHelpUser(User HelpUser) {this.HelpUser = HelpUser;}
 
     public long getPublishTime() {return publishTime;}
 

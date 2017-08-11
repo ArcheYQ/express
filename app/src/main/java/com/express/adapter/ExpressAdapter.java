@@ -1,5 +1,6 @@
 package com.express.adapter;
 
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
@@ -15,10 +16,19 @@ import java.util.List;
 
 public class ExpressAdapter extends RecyclerView.Adapter{
 
+    public void setList(List<ExpressHelp> list) {
+        this.list = list;
+        list.add(0,new ExpressHelp());
+        notifyDataSetChanged();
+    }
+
     List<ExpressHelp> list;
 
-    public ExpressAdapter(List<ExpressHelp> list){
+    private Context context;
+
+    public ExpressAdapter(List<ExpressHelp> list , Context context){
         this.list = list;
+        this.context = context;
     }
 
     @Override
@@ -47,7 +57,7 @@ public class ExpressAdapter extends RecyclerView.Adapter{
             advertiseViewHolder.load();
         }else {
             ExpressViewHolder expressViewHolder = (ExpressViewHolder) holder;
-//            expressViewHolder.load(list.get(position));
+            expressViewHolder.load(context , list.get(position));
         }
     }
 
