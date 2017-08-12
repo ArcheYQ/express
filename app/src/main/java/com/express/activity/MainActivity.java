@@ -55,10 +55,12 @@ public class MainActivity extends AppCompatActivity {
     ImageView ivLeftBackground;
     @Bind(R.id.id_menu)
     SlidingMenu idMenu;
-    @Bind(R.id.ll_side)
-    LinearLayout llSide;
     @Bind(R.id.srl_main)
     SmartRefreshLayout srlMain;
+    @Bind(R.id.iv_PersonInformation)
+    ImageView ivPersonInformation;
+    @Bind(R.id.iv_sms)
+    ImageView ivSms;
     private int page = 0;
     ExpressAdapter adapter;
 
@@ -72,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
         rvMain.setItemAnimator(new DefaultItemAnimator());
         List<ExpressHelp> list = new ArrayList<>();
         srlMain.autoRefresh();
-        adapter = new ExpressAdapter(list,this);
+        adapter = new ExpressAdapter(list, this);
         rvMain.setAdapter(adapter);
         initView();
         initData();
@@ -93,7 +95,7 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void fail(String error) {
                         refreshlayout.finishRefresh();
-                        Toast.makeText(MainActivity.this,error, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.this, error, Toast.LENGTH_SHORT).show();
                     }
                 });
             }
@@ -152,7 +154,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    @OnClick({R.id.cv_slide_tou, R.id.tv_slide_nickname, R.id.ll_address, R.id.fb_publish, R.id.ll_feedback})
+    @OnClick({R.id.cv_slide_tou, R.id.tv_slide_nickname, R.id.ll_address, R.id.fb_publish, R.id.ll_feedback,R.id.iv_PersonInformation, R.id.iv_sms})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.cv_slide_tou:
@@ -170,8 +172,15 @@ public class MainActivity extends AppCompatActivity {
             case R.id.ll_feedback:
                 startActivity(new Intent(this, FeedbackActivity.class));
                 break;
+            case R.id.iv_PersonInformation:
+                idMenu.toggle();
+                break;
+            case R.id.iv_sms:
+                startActivity(new Intent(this,ConversationActivity.class));
+                break;
         }
     }
+
 
 
 }

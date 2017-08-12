@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
-import android.util.Log;
 import android.util.TypedValue;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
@@ -13,6 +12,7 @@ import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
+
 import com.express.ExpressApplication;
 import com.express.R;
 
@@ -100,7 +100,7 @@ public class SlidingMenu extends HorizontalScrollView {
             mWapper = (LinearLayout) getChildAt(0);//因为Wapper=Menu+Content 所以不用再设置 getChildAt为获得控件群中的小控件0为下标
             mMenu = (ViewGroup) mWapper.getChildAt(0);
             mContent = (ViewGroup) mWapper.getChildAt(1);
-            shadow = mContent.getChildAt(1);
+            shadow = mContent.getChildAt(2);
             mMenuWidth = mMenu.getLayoutParams().width=mScreenWidth - mMenuRightPadding;
             mContent.getLayoutParams().width=mScreenWidth;
             once = true;

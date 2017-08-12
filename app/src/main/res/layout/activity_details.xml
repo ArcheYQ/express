@@ -219,9 +219,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="快递点名称："
-                    android:id="@+id/tv_details_point"
+
                     android:textSize="@dimen/sp_16"/>
                 <TextView
+                    android:id="@+id/tv_details_point"
                     android:layout_marginTop="5dp"
                     android:layout_marginLeft="5dp"
                     android:layout_width="wrap_content"
