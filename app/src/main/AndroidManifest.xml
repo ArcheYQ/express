@@ -35,7 +35,7 @@
             android:name="Bmob_APP_KEY"
             android:value="1258d8b2a3aad308ba4b2214dc870d7b" />
         `
-        <activity android:name=".activity.LoginActivity">
+        <activity android:name=".activity.ReputationActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -75,7 +75,14 @@
 
         <activity android:name=".activity.GoingActivity" />
         <activity android:name=".activity.AllExpressActivity" />
-        <activity android:name=".activity.ReputationActivity"></activity>
+        <!-- <activity android:name=".activity.ReputationActivity"></activity> -->
+        <activity android:name=".activity.FlowerActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

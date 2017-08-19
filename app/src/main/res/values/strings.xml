@@ -1,4 +1,6 @@
 <resources>
+
+    <string name="underline_text"><u>规则说明</u></string>
     <string name="app_name">express</string>
     <string-array name="dormitory">
         <item name="dormitory_0">宿舍</item>
@@ -31,5 +33,6 @@
     </string-array>
 
     <string name="err_no_net">网络不给力/(ㄒoㄒ)/~~</string>
-
+    <string name="action_settings">Settings</string>
+    <string name="voice_up_tips">手指上滑,取消发送</string>
 </resources>

@@ -8,6 +8,7 @@
     android:orientation="vertical"
     tools:context="com.express.activity.ReputationActivity">
     <android.support.v7.widget.Toolbar
+        android:id="@+id/tb_reputation"
         android:layout_width="match_parent"
         android:layout_height="45dp"
         android:elevation="5dp"
@@ -23,57 +24,255 @@
             />
     </android.support.v7.widget.Toolbar>
     <TextView
+        android:id="@+id/tv_residue_help"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="当前信誉值：12"
+        android:text="剩余可请求帮助次数：5"
         android:layout_marginLeft="10dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="10dp"
+
         />
     <com.github.lzyzsd.circleprogress.ArcProgress
         android:id="@+id/arc_progress"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
         android:layout_gravity="center_horizontal"
-        android:layout_width="140dp"
-        android:layout_height="140dp"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
         app:arc_bottom_text_size="@dimen/sp_12"
         custom:arc_unfinished_color="@color/going_unfinsh_color"
         custom:arc_finished_color="#4290f0"
         custom:arc_progress="100"/>
     <View
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
         android:layout_width="wrap_content"
         android:layout_height="5dp"
         android:background="@color/going_unfinsh_color"/>
     <TextView
-        android:layout_marginTop="5dp"
+        android:id="@+id/tv_reputation_values"
+        android:layout_marginTop="10dp"
         android:layout_marginLeft="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="剩余可请求帮助次数：5"/>
+        android:text="当前信誉值：12"/>
     <LinearLayout
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="215dp"
+        android:gravity="bottom">
         <LinearLayout
             android:orientation="vertical"
             android:gravity="center_horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1">
+            <ImageView
+                android:id="@+id/iv_level_0"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:src="@drawable/nolevel"
+                android:visibility="gone"/>
             <TextView
+                android:textColor="#e7e7e7"
+                android:id="@+id/tv_level_0"
+                android:layout_marginBottom="5dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="0"/>
             <View
-                android:background="@color/gray"
+                android:background="@drawable/bg_lv0"
                 android:layout_width="5dp"
                 android:layout_height="10dp"/>
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="25dp"
+                android:src="@drawable/ic_userlevel_0"/>
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+            <ImageView
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:src="@drawable/brass"
+                android:id="@+id/iv_level_1"
+                android:visibility="gone"/>
             <TextView
-                android:id="@+id/tv_level_0"
+                android:textColor="#f7a270"
+                android:layout_marginBottom="5dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Lv.0"/>
+                android:text="5" />
+
+            <View
+                android:background="@drawable/bg_lv1"
+                android:layout_width="5dp"
+                android:layout_height="20dp"/>
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="25dp"
+                android:src="@drawable/ic_userlevel_1"/>
         </LinearLayout>
+        <LinearLayout
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+            <ImageView
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:id="@+id/iv_level_2"
+                android:src="@drawable/brass"
+                android:visibility="gone"/>
+
+            <TextView
+                android:textColor="#da844e"
+                android:layout_marginBottom="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="20" />
+
+            <View
+                android:background="@drawable/bg_lv2"
+                android:layout_width="5dp"
+                android:layout_height="35dp"/>
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="25dp"
+                android:src="@drawable/ic_userlevel_2"/>
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+            <ImageView
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:src="@drawable/silver"
+                android:id="@+id/iv_level_3"
+                android:visibility="gone"/>
+
+            <TextView
+                android:textColor="#c7c6c4"
+                android:layout_marginBottom="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="40" />
+
+            <View
+                android:background="@drawable/bg_lv3"
+                android:layout_width="5dp"
+                android:layout_height="55dp"/>
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="25dp"
+                android:src="@drawable/ic_userlevel_3"/>
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <ImageView
+                android:id="@+id/iv_level_4"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:src="@drawable/silver"
+                android:visibility="gone"/>
+
+            <TextView
+                android:textColor="#b2b2b2"
+                android:layout_marginBottom="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="65" />
+
+            <View
+                android:background="@drawable/bg_lv4"
+                android:layout_width="5dp"
+                android:layout_height="80dp"/>
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="25dp"
+                android:src="@drawable/ic_userlevel_4"/>
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+            <ImageView
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:src="@drawable/yellow"
+                android:id="@+id/iv_level_5"
+                android:visibility="gone"/>
+
+            <TextView
+                android:textColor="#fdd22f"
+                android:layout_marginBottom="5dp"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="95" />
+
+            <View
+                android:background="@drawable/bg_lv5"
+                android:layout_width="5dp"
+                android:layout_height="110dp"/>
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="25dp"
+                android:src="@drawable/ic_userlevel_5"/>
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+            <ImageView
+                android:id="@+id/iv_level_6"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:src="@drawable/yellow"
+                android:visibility="gone"/>
+
+            <TextView
+                android:textColor="#f4b72c"
+                android:layout_marginBottom="5dp"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="130" />
+
+            <View
+                android:background="@drawable/bg_lv6"
+                android:layout_width="5dp"
+                android:layout_height="145dp"/>
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="25dp"
+                android:src="@drawable/ic_userlevel_6"/>
+        </LinearLayout>
+
     </LinearLayout>
+    <TextView
+        android:id="@+id/tv_rule"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="right"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/underline_text"
+        android:textColor="#145eba"/>
 </LinearLayout>

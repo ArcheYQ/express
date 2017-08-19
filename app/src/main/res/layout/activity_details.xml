@@ -412,6 +412,7 @@
             android:background="@drawable/btn_delete"
             android:text="帮助"
             android:textColor="@color/white" />
+
     </LinearLayout>
 
 </android.support.v4.widget.NestedScrollView>

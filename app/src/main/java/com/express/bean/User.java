@@ -23,6 +23,25 @@ public class User extends BmobUser {
     private String profile;
     private String background;
     private String sum;
+
+    public String[] getComment() {
+        return comment;
+    }
+
+    public void setComment(String[] comment) {
+        this.comment = comment;
+    }
+
+    private String[] comment;
+    public String getHelpSum() {
+        return helpSum;
+    }
+
+    public void setHelpSum(String helpSum) {
+        this.helpSum = helpSum;
+    }
+
+    private String helpSum;
     public String getSum() {
         return sum;
     }

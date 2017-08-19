@@ -49,6 +49,7 @@ dependencies {
     compile 'de.hdodenhof:circleimageview:2.1.0'
     compile 'ch.ielse:switchbutton:1.0.0'
     compile 'com.github.martin90s:ImagePicker:v1.3.2'
+    compile 'com.bigkoo:alertview:1.0.3'
     compile 'com.github.chrisbanes.photoview:library:1.2.4'
     compile 'cn.bmob.android:bmob-im:2.0.6@aar'
     compile 'com.sackcentury:shinebutton:0.1.9'
