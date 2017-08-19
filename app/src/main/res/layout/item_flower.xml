@@ -26,7 +26,7 @@
 
     <TextView
         android:id="@+id/tv_item_comment"
-        android:text="一月你还没有出现 二月你睡在隔壁 三月下起了大雨 四月里遍地蔷薇 五月我们对面坐着 犹如梦中 就这样到了六月 "
+        android:text="一月/你还没有出现 二月你睡在隔壁 三月下起了大雨 四月里遍地蔷薇 五月我们对面坐着 犹如梦中 就这样到了六月 "
         android:layout_marginRight="20dp"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="10dp"
