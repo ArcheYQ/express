@@ -42,6 +42,7 @@
             android:src="@drawable/find"/>
     </RelativeLayout>
     <RelativeLayout
+        android:id="@+id/rl_info"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:gravity="center_vertical">

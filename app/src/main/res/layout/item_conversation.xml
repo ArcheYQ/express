@@ -40,6 +40,7 @@
             android:layout_height="wrap_content"
             android:text="小仙女在吗？"/>
         <TextView
+            android:visibility="gone"
             android:textSize="12sp"
             android:id="@+id/tv_con_num"
             android:paddingTop="2dp"

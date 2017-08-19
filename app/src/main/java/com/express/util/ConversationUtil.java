@@ -1,11 +1,21 @@
 package com.express.util;
 
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.util.Log;
+import android.widget.Toast;
+
+import com.express.activity.ChatActivity;
 import com.express.bean.User;
 
 import cn.bmob.newim.BmobIM;
+import cn.bmob.newim.bean.BmobIMConversation;
+import cn.bmob.newim.bean.BmobIMUserInfo;
 import cn.bmob.newim.core.ConnectionStatus;
 import cn.bmob.newim.listener.ConnectListener;
 import cn.bmob.newim.listener.ConnectStatusChangeListener;
+import cn.bmob.newim.listener.ConversationListener;
 import cn.bmob.v3.BmobUser;
 import cn.bmob.v3.exception.BmobException;
 
@@ -18,13 +28,12 @@ public class ConversationUtil {
     private static ConversationUtil conversationUtil;
 
     private boolean isConnect = false;
-    /**
-     * 判断第一次连接服务器时是否出现错误
-     */
-    private boolean hasError = false;
 
     public static synchronized ConversationUtil getInstance(){
-        return conversationUtil == null ? new ConversationUtil() : conversationUtil;
+        if (conversationUtil ==  null){
+            conversationUtil = new ConversationUtil();
+        }
+        return conversationUtil;
     }
 
     /**
@@ -34,17 +43,21 @@ public class ConversationUtil {
      * 判断需不需要再次调用连接方法。
      */
     public void connect(){
-        if (!hasError){
+        if (!isConnect){
             BmobIM.connect(BmobUser.getCurrentUser(User.class).getObjectId(),new ConnectListener() {
                 @Override
                 public void done(String s, BmobException e) {
-                    hasError = (e != null && e.getErrorCode() == 9016);
+                    if (e == null){
+                        isConnect = true;
+                    }else {
+                        isConnect = false;
+                    }
                 }
             });
-
             BmobIM.getInstance().setOnConnectStatusChangeListener(new ConnectStatusChangeListener() {
                 @Override
                 public void onChange(ConnectionStatus connectionStatus) {
+
                     switch (connectionStatus.getCode()){
                         //断开连接
                         case 0:
@@ -65,9 +78,36 @@ public class ConversationUtil {
                             isConnect = false;
                             break;
                     }
+                    Log.i("ganma","连接状态"+isConnect+"  "+connectionStatus.getCode());
                 }
             });
         }
+
+
+
+    }
+    public void OpenWindow(BmobIMUserInfo info, final Context context){
+
+        BmobIM.getInstance().startPrivateConversation(info, new ConversationListener() {
+            @Override
+            public void done(BmobIMConversation c, BmobException e) {
+                if(e==null){
+                    Intent intent = new Intent(context, ChatActivity.class);
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable("start",c);
+                    intent.putExtras(bundle);
+                    context.startActivity(intent);
+                }else{
+                    Toast.makeText(context, "开启会话出错", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+
     }
 
+
+    public boolean isConnect() {
+        return isConnect;
+    }
 }

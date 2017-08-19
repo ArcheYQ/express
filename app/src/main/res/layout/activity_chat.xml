@@ -14,6 +14,7 @@
         android:layout_marginBottom="5dp"
         android:layout_height="45dp">
         <TextView
+            android:id="@+id/tv_chat_title"
             android:textColor="@color/share_text"
             android:textSize="15sp"
             android:text="一只番茄"
@@ -21,11 +22,38 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
     </android.support.v7.widget.Toolbar>
-    <android.support.v7.widget.RecyclerView
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:id="@+id/sl_chat">
+        <android.support.v7.widget.RecyclerView
         android:id="@+id/rv_conversation"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
+        android:layout_height="match_parent"
+        android:layout_weight="1">
     </android.support.v7.widget.RecyclerView>
+    </android.support.v4.widget.SwipeRefreshLayout>
+
+    <LinearLayout
+        android:gravity="center_vertical"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_gravity="bottom">
+        <EditText
+            android:id="@+id/et_chat"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            />
+        <ImageView
+            android:id="@+id/iv_send"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/chatsend"
+            android:layout_marginRight="10dp"
+            />
+    </LinearLayout>
 
 </LinearLayout>

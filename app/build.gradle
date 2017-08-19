@@ -7,6 +7,7 @@ android {
         applicationId "com.com.express"
         minSdkVersion 21
         targetSdkVersion 25
+        multiDexEnabled true
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -65,5 +66,6 @@ dependencies {
     compile 'io.reactivex:rxjava:1.1.0'
     compile 'com.zxy.android:tiny:0.0.6'
     compile 'com.daimajia.slider:library:1.1.5@aar'
+    compile 'com.github.lzyzsd:circleprogress:1.2.1'
     testCompile 'junit:junit:4.12'
 }

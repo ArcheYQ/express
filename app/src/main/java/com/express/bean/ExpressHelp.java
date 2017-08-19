@@ -63,6 +63,17 @@ public class ExpressHelp extends BmobObject implements Serializable{
      */
     private long publishTime;
 
+    public boolean isState() {
+        return state;
+    }
+    public void setState(boolean state) {
+        this.state = state;
+    }
+    /**
+     * 是否完成帮助
+     */
+    private boolean state;
+
     public User getUser(){return user;}
 
     public void setUser(User user){this.user=user;}

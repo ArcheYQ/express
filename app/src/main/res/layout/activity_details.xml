@@ -1,412 +1,417 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="#f1f0f0"
     android:orientation="vertical">
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/tb_detail"
-        android:background="@color/white"
-        android:elevation="5dp"
-        android:layout_width="match_parent"
-        android:layout_marginBottom="5dp"
-        android:layout_height="45dp">
-        <TextView
-            android:textColor="#b5a8b5"
-            android:textSize="15sp"
-            android:text="快递详情信息"
-            android:layout_gravity="center"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-    </android.support.v7.widget.Toolbar>
     <LinearLayout
-        android:gravity="center_vertical"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="20dp">
-        <ImageView
-            android:layout_marginLeft="5dp"
-            android:elevation="1dp"
-            android:layout_width="10dp"
-            android:layout_height="10dp"
-            android:src="@drawable/circl"/>
-        <TextView
-            android:textSize="@dimen/sp_14"
-            android:layout_marginLeft="5dp"
-
-            android:textColor="#b5a8b5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Personal information"/>
-
-    </LinearLayout>
-
-    <RelativeLayout
-        android:layout_marginTop="5dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="72dp"
-        android:background="@color/white">
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:layout_width="55dp"
-            android:layout_height="55dp"
-            android:src="@drawable/pig"
-            android:layout_marginTop="8.5dp"
-            android:layout_marginLeft="5dp"
-            android:id="@+id/cv_details_person"/>
+        android:layout_height="match_parent">
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/tb_detail"
+            android:background="@color/white"
+            android:elevation="5dp"
+            android:layout_width="match_parent"
+            android:layout_marginBottom="5dp"
+            android:layout_height="45dp">
+            <TextView
+                android:textColor="#b5a8b5"
+                android:textSize="15sp"
+                android:text="快递详情信息"
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </android.support.v7.widget.Toolbar>
         <LinearLayout
+            android:gravity="center_vertical"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="20dp">
+            <ImageView
+                android:layout_marginLeft="5dp"
+                android:elevation="1dp"
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:src="@drawable/circl"/>
+            <TextView
+                android:textSize="@dimen/sp_14"
+                android:layout_marginLeft="5dp"
+
+                android:textColor="#b5a8b5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Personal information"/>
+
+        </LinearLayout>
+
+        <RelativeLayout
             android:layout_marginTop="5dp"
-            android:layout_toRightOf="@id/cv_details_person"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <RelativeLayout
-                android:layout_weight="1"
-                android:layout_width="0dp"
-                android:layout_height="match_parent">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:layout_height="wrap_content"
-                    android:layout_centerHorizontal="true"
-                    android:text="小仙女"
-                    android:textSize="@dimen/sp_16"
-                    android:textColor="@color/black"
-                    android:id="@+id/tv_details_name"
-                    />
-                <RelativeLayout
-                    android:layout_centerHorizontal="true"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-                    <ImageView
-                        android:id="@+id/iv_huangguan"
-                        android:layout_width="17dp"
-                        android:layout_height="17dp"
-                        android:layout_marginTop="35dp"
-                        android:src="@drawable/yellow"/>
-                    <ImageView
-                        android:id="@+id/iv_level"
-                        android:layout_marginLeft="3dp"
-                        android:layout_width="26dp"
-                        android:layout_height="26dp"
-                        android:layout_marginTop="32dp"
-                        android:src="@drawable/ic_userlevel_6"
-                        android:layout_toRightOf="@id/iv_huangguan"/>
-
-                </RelativeLayout>
-
-
-            </RelativeLayout>
-            <RelativeLayout
-                android:layout_weight="1"
-                android:layout_width="0dp"
-                android:layout_height="match_parent">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:layout_height="wrap_content"
-                    android:layout_centerHorizontal="true"
-                    android:text="帮助值"
-                    android:textSize="@dimen/sp_16"
-                    android:textColor="#6b6868"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="10"
-                    android:id="@+id/tv_details_HelpTime"
-                    android:layout_centerHorizontal="true"
-                    android:textColor="#EF6E68"
-                    android:layout_marginLeft="15dp"
-                    android:layout_marginTop="36dp"/>
-            </RelativeLayout>
-            <RelativeLayout
-                android:layout_weight="1"
-                android:layout_width="0dp"
-                android:layout_height="match_parent">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:layout_height="wrap_content"
-                    android:layout_centerHorizontal="true"
-                    android:text="发布时间"
-                    android:textColor="#6b6868"
-                    android:textSize="@dimen/sp_16"
-                    />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="12:25"
-                    android:id="@+id/tv_details_PublishTime"
-                    android:layout_centerHorizontal="true"
-                    android:textColor="#EF6E68"
-                    android:layout_marginTop="36dp"/>
-            </RelativeLayout>
-        </LinearLayout>
-
-    </RelativeLayout>
-    <View
-        android:layout_width="wrap_content"
-        android:layout_height="10dp"
-        android:background="#f1f0f0"/>
-    <LinearLayout
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="20dp"
-        android:gravity="center_vertical">
-        <ImageView
-            android:layout_marginLeft="5dp"
-            android:elevation="1dp"
-            android:layout_width="10dp"
-            android:layout_height="10dp"
-            android:src="@drawable/circl"/>
-        <TextView
-            android:textSize="@dimen/sp_14"
-            android:layout_marginLeft="5dp"
-            android:textColor="#b5a8b5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Express information"/>
-
-    </LinearLayout>
-
-    <android.support.v7.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        app:cardCornerRadius="@dimen/dp_10"
-        app:cardBackgroundColor="@color/white"
-        app:cardElevation="5dp">
-        <LinearLayout
-            android:layout_marginTop="3dp"
-            android:orientation="vertical"
-            android:background="@color/white"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_width="match_parent"
-            android:layout_height="85dp">
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-                <TextView
-                    android:layout_marginTop="5dp"
-                    android:layout_marginLeft="5dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="收货地址："
-                    android:textSize="@dimen/sp_16"/>
-                <TextView
-                    android:layout_marginTop="5dp"
-                    android:layout_marginLeft="5dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="12栋楼下"
-                    android:id="@+id/tv_details_address"
-                    android:textColor="@color/black"/>
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-                <TextView
-                    android:layout_marginTop="5dp"
-                    android:layout_marginLeft="5dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="快递点名称："
-
-                    android:textSize="@dimen/sp_16"/>
-                <TextView
-                    android:id="@+id/tv_details_point"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginLeft="5dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="东门一号店"
-                    android:textColor="@color/black"/>
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-                <TextView
-                    android:layout_marginTop="5dp"
-                    android:layout_marginLeft="5dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="重量："
-                    android:textSize="@dimen/sp_16"/>
-                <TextView
-                    android:layout_marginTop="5dp"
-                    android:layout_marginLeft="5dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="1-3瓶水"
-                    android:id="@+id/tv_details_weight"
-                    android:textColor="@color/black" />
-
-            </LinearLayout>
-
-
-
-
-        </LinearLayout>
-    </android.support.v7.widget.CardView>
-    <LinearLayout
-        android:gravity="center_vertical"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="20dp">
-        <ImageView
-            android:layout_marginLeft="5dp"
-            android:elevation="1dp"
-            android:layout_width="10dp"
-            android:layout_height="10dp"
-            android:src="@drawable/circl"/>
-        <TextView
-            android:textSize="@dimen/sp_14"
-            android:layout_marginLeft="5dp"
-            android:textColor="#b5a8b5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Hidden information"/>
-
-    </LinearLayout>
-    <android.support.v7.widget.CardView
-        android:layout_marginTop="8dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:cardCornerRadius="@dimen/dp_10"
-        app:cardBackgroundColor="@color/white"
-        app:cardElevation="5dp">
-        <LinearLayout
-
-            android:orientation="vertical"
-            android:background="@color/white"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="72dp"
+            android:background="@color/white">
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:src="@drawable/pig"
+                android:layout_marginTop="8.5dp"
+                android:layout_marginLeft="5dp"
+                android:id="@+id/cv_details_person"/>
             <LinearLayout
                 android:layout_marginTop="5dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-                <TextView
-                    android:layout_marginTop="5dp"
-                    android:layout_marginLeft="5dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="取货码："
-                    android:textSize="@dimen/sp_16"/>
-                <TextView
-                    android:id="@+id/tv_details_pickup_code"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginLeft="5dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="10086" />
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-                <TextView
-                    android:layout_marginTop="5dp"
-                    android:layout_marginLeft="5dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="收件人："
-                    android:textSize="@dimen/sp_16"/>
-                <TextView
-                    android:id="@+id/tv_details_real_name"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginLeft="5dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="黄雅倩" />
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-                <TextView
-                    android:layout_marginTop="5dp"
-                    android:layout_marginLeft="5dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="电话号码："
-                    android:textSize="@dimen/sp_16"/>
-                <TextView
-                    android:id="@+id/tv_details_telephone"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginLeft="5dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="12345678910" />
+                android:layout_toRightOf="@id/cv_details_person"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <RelativeLayout
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:text="小仙女"
+                        android:textSize="@dimen/sp_16"
+                        android:textColor="@color/black"
+                        android:id="@+id/tv_details_name"
+                        />
+                    <RelativeLayout
+                        android:layout_centerHorizontal="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <ImageView
+                            android:id="@+id/iv_huangguan"
+                            android:layout_width="17dp"
+                            android:layout_height="17dp"
+                            android:layout_marginTop="35dp"
+                            android:src="@drawable/yellow"/>
+                        <ImageView
+                            android:id="@+id/iv_level"
+                            android:layout_marginLeft="3dp"
+                            android:layout_width="26dp"
+                            android:layout_height="26dp"
+                            android:layout_marginTop="32dp"
+                            android:src="@drawable/ic_userlevel_6"
+                            android:layout_toRightOf="@id/iv_huangguan"/>
 
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-                <TextView
-                    android:layout_marginTop="5dp"
-                    android:layout_marginLeft="5dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="备注："
-                    android:textSize="@dimen/sp_16"/>
-                <TextView
-                    android:id="@+id/tv_details_remarks"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginLeft="5dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="无无无" />
+                    </RelativeLayout>
 
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-                <TextView
-                    android:layout_marginTop="5dp"
-                    android:layout_marginLeft="5dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="快递短信："
-                    android:textSize="@dimen/sp_16"/>
-                <TextView
-                    android:id="@+id/tv_details_message"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginLeft="5dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="无" />
 
+                </RelativeLayout>
+                <RelativeLayout
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:text="帮助值"
+                        android:textSize="@dimen/sp_16"
+                        android:textColor="#6b6868"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="10"
+                        android:id="@+id/tv_details_HelpTime"
+                        android:layout_centerHorizontal="true"
+                        android:textColor="#EF6E68"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginTop="36dp"/>
+                </RelativeLayout>
+                <RelativeLayout
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:text="发布时间"
+                        android:textColor="#6b6868"
+                        android:textSize="@dimen/sp_16"
+                        />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="12:25"
+                        android:id="@+id/tv_details_PublishTime"
+                        android:layout_centerHorizontal="true"
+                        android:textColor="#EF6E68"
+                        android:layout_marginTop="36dp"/>
+                </RelativeLayout>
             </LinearLayout>
-            <View
-                android:layout_width="wrap_content"
+
+        </RelativeLayout>
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="10dp"
+            android:background="#f1f0f0"/>
+        <LinearLayout
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:gravity="center_vertical">
+            <ImageView
+                android:layout_marginLeft="5dp"
+                android:elevation="1dp"
+                android:layout_width="10dp"
                 android:layout_height="10dp"
-                android:background="@color/white"/>
+                android:src="@drawable/circl"/>
+            <TextView
+                android:textSize="@dimen/sp_14"
+                android:layout_marginLeft="5dp"
+                android:textColor="#b5a8b5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Express information"/>
 
         </LinearLayout>
 
-    </android.support.v7.widget.CardView>
-    <Button
-        android:layout_gravity="bottom"
-        android:id="@+id/btn_help"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_marginBottom="20dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginTop="30dp"
-        android:background="@drawable/btn_delete"
-        android:text="帮助"
-        android:textColor="@color/white" />
-</LinearLayout>
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            app:cardCornerRadius="@dimen/dp_10"
+            app:cardBackgroundColor="@color/white"
+            app:cardElevation="5dp">
+            <LinearLayout
+                android:layout_marginTop="3dp"
+                android:orientation="vertical"
+                android:background="@color/white"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="85dp">
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_marginTop="5dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="收货地址："
+                        android:textSize="@dimen/sp_16"/>
+                    <TextView
+                        android:layout_marginTop="5dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="12栋楼下"
+                        android:id="@+id/tv_details_address"
+                        android:textColor="@color/black"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_marginTop="5dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="快递点名称："
+
+                        android:textSize="@dimen/sp_16"/>
+                    <TextView
+                        android:id="@+id/tv_details_point"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="东门一号店"
+                        android:textColor="@color/black"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_marginTop="5dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="重量："
+                        android:textSize="@dimen/sp_16"/>
+                    <TextView
+                        android:layout_marginTop="5dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="1-3瓶水"
+                        android:id="@+id/tv_details_weight"
+                        android:textColor="@color/black" />
+
+                </LinearLayout>
+
+
+
+
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+        <LinearLayout
+            android:gravity="center_vertical"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="20dp">
+            <ImageView
+                android:layout_marginLeft="5dp"
+                android:elevation="1dp"
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:src="@drawable/circl"/>
+            <TextView
+                android:textSize="@dimen/sp_14"
+                android:layout_marginLeft="5dp"
+                android:textColor="#b5a8b5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Hidden information"/>
+
+        </LinearLayout>
+        <android.support.v7.widget.CardView
+            android:layout_marginTop="8dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="@dimen/dp_10"
+            app:cardBackgroundColor="@color/white"
+            app:cardElevation="5dp">
+            <LinearLayout
+
+                android:orientation="vertical"
+                android:background="@color/white"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <LinearLayout
+                    android:layout_marginTop="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_marginTop="5dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="取货码："
+                        android:textSize="@dimen/sp_16"/>
+                    <TextView
+                        android:id="@+id/tv_details_pickup_code"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="10086" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_marginTop="5dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="收件人："
+                        android:textSize="@dimen/sp_16"/>
+                    <TextView
+                        android:id="@+id/tv_details_real_name"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="黄雅倩" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_marginTop="5dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="电话号码："
+                        android:textSize="@dimen/sp_16"/>
+                    <TextView
+                        android:id="@+id/tv_details_telephone"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="12345678910" />
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_marginTop="5dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="备注："
+                        android:textSize="@dimen/sp_16"/>
+                    <TextView
+                        android:id="@+id/tv_details_remarks"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="无无无" />
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_marginTop="5dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="快递短信："
+                        android:textSize="@dimen/sp_16"/>
+                    <TextView
+                        android:id="@+id/tv_details_message"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="无" />
+
+                </LinearLayout>
+                <View
+                    android:layout_width="wrap_content"
+                    android:layout_height="10dp"
+                    android:background="@color/white"/>
+
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+        <Button
+            android:layout_gravity="bottom"
+            android:id="@+id/btn_help"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginBottom="20dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/btn_delete"
+            android:text="帮助"
+            android:textColor="@color/white" />
+    </LinearLayout>
+
+</android.support.v4.widget.NestedScrollView>

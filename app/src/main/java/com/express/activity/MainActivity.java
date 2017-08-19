@@ -19,6 +19,7 @@ import com.express.R;
 import com.express.adapter.ExpressAdapter;
 import com.express.bean.ExpressHelp;
 import com.express.bean.User;
+import com.express.util.ConversationUtil;
 import com.express.util.ExpressUtil;
 import com.express.view.SlidingMenu;
 import com.scwang.smartrefresh.header.DeliveryHeader;
@@ -61,6 +62,8 @@ public class MainActivity extends AppCompatActivity {
     ImageView ivPersonInformation;
     @Bind(R.id.iv_sms)
     ImageView ivSms;
+    @Bind(R.id.ll_going)
+    LinearLayout llGoing;
     private int page = 0;
     ExpressAdapter adapter;
 
@@ -78,6 +81,7 @@ public class MainActivity extends AppCompatActivity {
         rvMain.setAdapter(adapter);
         initView();
         initData();
+        ConversationUtil.getInstance().connect();
     }
 
     private void initView() {
@@ -120,7 +124,7 @@ public class MainActivity extends AppCompatActivity {
             }
         }).setRefreshHeader(new DeliveryHeader(this));
         srlMain.setHeaderHeight(150);
-        srlMain.setPrimaryColors(getColor(R.color.blue_balloon));
+//        srlMain.setPrimaryColors(getColor(R.color.blue_balloon));
         srlMain.setRefreshFooter(new BallPulseFooter(this).setSpinnerStyle(SpinnerStyle.Scale));
     }
 
@@ -154,7 +158,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    @OnClick({R.id.cv_slide_tou, R.id.tv_slide_nickname, R.id.ll_address, R.id.fb_publish, R.id.ll_feedback,R.id.iv_PersonInformation, R.id.iv_sms})
+    @OnClick({R.id.cv_slide_tou, R.id.tv_slide_nickname, R.id.ll_address, R.id.fb_publish, R.id.ll_feedback, R.id.iv_PersonInformation, R.id.iv_sms, R.id.ll_going,R.id.ll_my_record})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.cv_slide_tou:
@@ -176,11 +180,16 @@ public class MainActivity extends AppCompatActivity {
                 idMenu.toggle();
                 break;
             case R.id.iv_sms:
-                startActivity(new Intent(this,ConversationActivity.class));
+                startActivity(new Intent(this, ConversationActivity.class));
+                break;
+            case R.id.ll_going:
+                startActivity(new Intent(this, GoingActivity.class));
+                break;
+            case R.id.ll_my_record:
+                startActivity(new Intent(this, AllExpressActivity.class));
                 break;
         }
     }
-
 
 
 }

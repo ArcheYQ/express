@@ -36,11 +36,11 @@ public class ExpressUtil {
      */
     public void queryExpressHelp(int page , final QueryListener listener){
         BmobQuery<ExpressHelp> query = new BmobQuery<>();
-        query.setLimit(10);
-        query.setSkip(10*page);
-        query.include("user");
-        query.order("-createdAt");
-        query.addWhereDoesNotExists("HelpUser");
+        query.setLimit(10);//每次查询十个数据
+        query.setSkip(10*page);//跳过前面多少数据
+        query.include("user");//包括其他表的信息
+        query.order("-createdAt");//排序，按时间降序
+        query.addWhereDoesNotExists("HelpUser");//筛选出这列属性为空的数据
         query.findObjects(new FindListener<ExpressHelp>() {
             @Override
             public void done(List<ExpressHelp> data, BmobException e) {

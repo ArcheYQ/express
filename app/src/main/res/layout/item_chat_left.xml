@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:padding="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/rl_left_chat"
+     >
+
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/cc_chat_head"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/pig" />
+        <TextView
+            android:id="@+id/tv_chat_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="5dp"
+            android:layout_toRightOf="@+id/cc_chat_head"
+            android:text="一只番茄"
+            android:textColor="@color/black" />
+        <TextView
+
+            android:layout_marginTop="25dp"
+            android:id="@+id/tv_chat_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_toRightOf="@+id/cc_chat_head"
+            android:background="@drawable/message_left"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="left|center"
+            android:lineSpacingExtra="2dp"
+            android:maxWidth="225.0dip"
+            android:minHeight="30dip"
+            android:textColor="#ff000000"
+            android:textSize="15sp"
+            android:text="啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦"/>
+    </RelativeLayout>
+
+</LinearLayout>
