@@ -3,11 +3,12 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
     <EditText
-        android:id="@+id/etName"
+        android:id="@+id/etfinish"
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
         android:gravity="center"
-        android:hint="请输入您的评价"
+        android:inputType="number"
+        android:hint="请输入您的完成码"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 

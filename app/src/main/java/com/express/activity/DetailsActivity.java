@@ -1,7 +1,10 @@
 package com.express.activity;
 
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -69,9 +72,11 @@ public class DetailsActivity extends BaseActivity {
     TextView tvDetailsMessage;
     @Bind(R.id.btn_help)
     Button btnHelp;
+    ExpressHelp express;
     private boolean isSelf ;
     private AlertView mAlertViewExt;
     private EditText etName;
+    private String finish;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -84,7 +89,10 @@ public class DetailsActivity extends BaseActivity {
     }
 
     private void initView() {
-        ExpressHelp express = (ExpressHelp) getIntent().getSerializableExtra("express");
+        express = (ExpressHelp) getIntent().getSerializableExtra("express");
+        int str= (int) (express.getPublishTime()%10000);//待处理字符串
+        int finish1 = (Integer.parseInt(express.getUser().getUserId())%10000)*str;
+        finish = String.valueOf(finish1);
         Glide.with(ExpressApplication.getContext())
                 .load(express.getUser().getHeadPicThumb())
                 .into(cvDetailsPerson);
@@ -134,7 +142,6 @@ public class DetailsActivity extends BaseActivity {
         switch (btnHelp.getText().toString()){
             case "帮助" :
                 showProgressDialog();
-                final ExpressHelp express = (ExpressHelp) getIntent().getSerializableExtra("express");
                 BmobQuery<ExpressHelp> bmobQuery = new BmobQuery<>();
                 bmobQuery.getObject(express.getObjectId(), new QueryListener<ExpressHelp>() {
                     @Override
@@ -160,14 +167,20 @@ public class DetailsActivity extends BaseActivity {
                 });
                 break;
             case "输入完成码" :
-                ViewGroup extView = (ViewGroup) LayoutInflater.from(this).inflate(R.layout.alertext_form, null);
-                etName = (EditText) extView.findViewById(R.id.etName);
-                etName.setHint("请输入你的完成码");
+                final EditText etFinish;
+                ViewGroup extView = (ViewGroup) LayoutInflater.from(this).inflate(R.layout.alertext_finish, null);
+                etFinish= (EditText) extView.findViewById(R.id.etfinish);
+                etFinish.setHint("请输入你的完成码");
                 mAlertViewExt = new AlertView("提示", "请输入对方给你的完成码！", "取消", null, new String[]{"确定"}, this, AlertView.Style.Alert, new OnItemClickListener() {
                     @Override
                     public void onItemClick(Object o, int position) {
                         if (position == 0) {
-
+                            if(etFinish.getText().equals(finish)){
+                                Toast.makeText(DetailsActivity.this, "交易完成，谢谢您", Toast.LENGTH_SHORT).show();
+                                express.setState(true);
+                            }else {
+                                Toast.makeText(DetailsActivity.this, "完成码出错，请与对方确认后再输", Toast.LENGTH_SHORT).show();
+                            }
                         }
                     }
                 });
@@ -187,7 +200,42 @@ public class DetailsActivity extends BaseActivity {
                         new String[]{"删除请求","查看完成码"},
                         this, AlertView.Style.ActionSheet, new OnItemClickListener(){
                     public void onItemClick(Object o,int position){
+                        if(position == 0){
+                            ExpressHelp expressHelp = new ExpressHelp();
+                            expressHelp.setObjectId(express.getObjectId());
+                            expressHelp.delete(new UpdateListener() {
+                                @Override
+                                public void done(BmobException e) {
+                                    if (e==null){
+                                        Toast.makeText(mActivity, "成功删除", Toast.LENGTH_SHORT).show();
+                                        finish();
+                                    }else{
+                                        if(e.getErrorCode()==9016){
+                                            Toast.makeText(mActivity, "网络不给力/(ㄒoㄒ)/~~", Toast.LENGTH_SHORT).show();
+                                        }else{
+                                            Toast.makeText(mActivity, e.getMessage(), Toast.LENGTH_SHORT).show();
+                                        }
+                                    }
+                                }
+                            });
+                        }else if (position ==1){
 
+                            final AlertDialog.Builder normalDialog =
+                                    new AlertDialog.Builder(DetailsActivity.this);
+                            normalDialog.setIcon(R.drawable.rule);
+                            normalDialog.setTitle("完成码");
+                            normalDialog.setMessage("请当面确认快递后，再提供给对方：\n"+finish);
+                            normalDialog.setPositiveButton("确定",
+                                    new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialog, int which) {
+                                            //...To-do
+                                        }
+                                    });
+
+                            // 显示
+                            normalDialog.show();
+                        }
                     }
                 }).show();
                 break;
@@ -196,8 +244,32 @@ public class DetailsActivity extends BaseActivity {
                         new String[]{"查看完成码", "联系帮助者"},
                         this, AlertView.Style.ActionSheet, new OnItemClickListener(){
                     public void onItemClick(Object o,int position){
+                        if(position==0){
+                            final AlertDialog.Builder normalDialog =
+                                    new AlertDialog.Builder(DetailsActivity.this);
+                            normalDialog.setIcon(R.drawable.rule);
+                            normalDialog.setTitle("完成码");
+                            normalDialog.setMessage("请当面确认快递后，再提供给对方：\n"+finish);
+                            normalDialog.setPositiveButton("确定",
+                                    new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialog, int which) {
+                                            //...To-do
+                                        }
+                                    });
 
+                            // 显示
+                            normalDialog.show();
+                        }else if(position==1){
+                            Intent intent = new Intent(DetailsActivity.this,PersonalActivity.class);
+                            Bundle bundle = new Bundle();
+                            bundle.putSerializable("user",express.getHelpUser());
+                            intent.putExtras(bundle);
+                            startActivity(intent);
+                        }
                     }
+
+
                 }).show();
                 break;
         }

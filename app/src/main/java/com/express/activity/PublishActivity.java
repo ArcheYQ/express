@@ -142,6 +142,7 @@ public class PublishActivity extends BaseActivity {
                 }else if (TextUtils.isEmpty(etAddressTelephone.getText().toString())){
                     Toast.makeText(mActivity, "电话号码不能为空", Toast.LENGTH_SHORT).show();
                 }else{
+                    expressHelp.setState(false);
                     expressHelp.setUser(BmobUser.getCurrentUser(User.class));
                     expressHelp.setAddressAccuracy(etAddressAccuracy.getText().toString());
                     expressHelp.setExpressSms(etExpressSms.getText().toString());
@@ -159,6 +160,7 @@ public class PublishActivity extends BaseActivity {
                             dissmiss();
                             if (e == null){
                                 Toast.makeText(mActivity, "发布成功", Toast.LENGTH_SHORT).show();
+
                                 finish();
                             }else {
                                 Toast.makeText(mActivity, e.getErrorCode()+e.getMessage(), Toast.LENGTH_SHORT).show();
