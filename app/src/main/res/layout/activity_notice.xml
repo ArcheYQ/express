@@ -3,12 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/going_unfinsh_color"
-    tools:context="com.express.activity.SettingActivity"
+    tools:context="com.express.activity.NoticeActivity"
     android:orientation="vertical">
-
     <android.support.v7.widget.Toolbar
-        android:id="@+id/tb_setting"
+        android:id="@+id/tb_notice"
         android:background="@color/white"
         android:elevation="5dp"
         android:layout_width="match_parent"
@@ -16,151 +14,129 @@
         android:layout_height="45dp">
         <TextView
             android:textColor="@color/share_text"
-            android:textSize="16sp"
-            android:text="设置"
             android:layout_gravity="center"
+            android:textSize="16sp"
+            android:text="消息通知"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
     </android.support.v7.widget.Toolbar>
 
-    <RelativeLayout
-        android:id="@+id/rl_password"
-        android:clickable="true"
-        android:background="@drawable/item_message_selector"
-        android:layout_width="match_parent"
-        android:layout_height="45dp">
-        <TextView
-            android:textSize="15sp"
-            android:textColor="@color/share_text"
-            android:layout_marginLeft="10dp"
-            android:layout_centerVertical="true"
-            android:text="修改密码"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-        <ImageView
-            android:layout_marginRight="@dimen/setting_margin_left"
-            android:layout_centerVertical="true"
-            android:layout_alignParentRight="true"
-            android:src="@drawable/setting_right"
-            android:layout_width="@dimen/setting_ic_length"
-            android:layout_height="@dimen/setting_ic_length" />
-    </RelativeLayout>
     <View
-        android:layout_marginLeft="@dimen/setting_margin_left"
         android:layout_width="match_parent"
         android:layout_height="1px"
         android:background="@color/part_linear_color"/>
     <RelativeLayout
-        android:clickable="true"
-        android:background="@drawable/item_message_selector"
-        android:id="@+id/rl_phone_number"
+        android:background="@color/white"
         android:layout_width="match_parent"
         android:layout_height="@dimen/setting_item_height">
         <TextView
-            android:text="手机号码"
+            android:textColor="@color/share_text"
+            android:text="声音"
             android:layout_marginLeft="@dimen/setting_margin_left"
             android:layout_centerVertical="true"
-            android:textSize="15sp"
-            android:textColor="@color/share_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
-        <TextView
-            android:id="@+id/tv_user_number"
-            android:layout_marginRight="35dp"
-            android:layout_alignParentRight="true"
+        <ch.ielse.view.SwitchView
             android:layout_centerVertical="true"
-            android:layout_width="wrap_content"
-            android:text="123****8910"
-            android:layout_height="wrap_content" />
-        <ImageView
             android:layout_marginRight="@dimen/setting_margin_left"
-            android:layout_centerVertical="true"
             android:layout_alignParentRight="true"
-            android:src="@drawable/setting_right"
-            android:layout_width="@dimen/setting_ic_length"
-            android:layout_height="@dimen/setting_ic_length" />
-    </RelativeLayout>
-    <View
-        android:layout_marginLeft="@dimen/setting_margin_left"
-        android:layout_width="match_parent"
-        android:layout_height="1px"
-        android:background="@color/part_linear_color"/>
-    <RelativeLayout
-        android:id="@+id/rl_notice"
-        android:clickable="true"
-        android:background="@drawable/item_message_selector"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/setting_item_height">
-        <TextView
-            android:textSize="15sp"
-            android:text="消息通知"
-            android:layout_marginLeft="@dimen/setting_margin_left"
-            android:layout_centerVertical="true"
-            android:textColor="@color/share_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
+    </RelativeLayout>
 
-        <ImageView
-            android:layout_marginRight="@dimen/setting_margin_left"
-            android:layout_centerVertical="true"
-            android:layout_alignParentRight="true"
-            android:src="@drawable/setting_right"
-            android:layout_width="@dimen/setting_ic_length"
-            android:layout_height="@dimen/setting_ic_length" />
-    </RelativeLayout>
     <View
+        android:layout_marginLeft="@dimen/setting_margin_left"
         android:layout_width="match_parent"
         android:layout_height="1px"
         android:background="@color/part_linear_color"/>
-    <View
-        android:background="@color/going_unfinsh_color"
-        android:layout_width="match_parent"
-        android:layout_height="10dp"/>
+
     <RelativeLayout
-        android:id="@+id/rl_current_version"
-        android:clickable="true"
-        android:background="@drawable/item_message_selector"
+        android:background="@color/white"
         android:layout_width="match_parent"
         android:layout_height="@dimen/setting_item_height">
         <TextView
-            android:textSize="15sp"
-            android:text="当前版本"
+            android:textColor="@color/share_text"
+            android:text="震动"
             android:layout_marginLeft="@dimen/setting_margin_left"
             android:layout_centerVertical="true"
-            android:textColor="@color/share_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
-        <TextView
-            android:text="1.1.0"
-            android:layout_marginRight="@dimen/setting_margin_left"
+        <ch.ielse.view.SwitchView
             android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/setting_margin_left"
             android:layout_alignParentRight="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
     </RelativeLayout>
+
     <View
         android:layout_marginLeft="@dimen/setting_margin_left"
         android:layout_width="match_parent"
         android:layout_height="1px"
         android:background="@color/part_linear_color"/>
     <RelativeLayout
-        android:id="@+id/rl_version_update"
-        android:clickable="true"
-        android:background="@drawable/item_message_selector"
+        android:background="@color/white"
         android:layout_width="match_parent"
         android:layout_height="@dimen/setting_item_height">
         <TextView
-            android:textSize="15sp"
-            android:text="版本更新"
+            android:textColor="@color/share_text"
+            android:text="消息通知栏显示"
             android:layout_marginLeft="@dimen/setting_margin_left"
             android:layout_centerVertical="true"
-            android:textColor="@color/share_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
-        <TextView
-            android:text="已经是最新版本"
-            android:layout_marginRight="@dimen/setting_margin_left"
+        <ch.ielse.view.SwitchView
             android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/setting_margin_left"
+            android:layout_alignParentRight="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+
+    <View
+        android:layout_marginLeft="@dimen/setting_margin_left"
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/part_linear_color"/>
+
+    <RelativeLayout
+        android:background="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/setting_item_height">
+        <TextView
+            android:textColor="@color/share_text"
+            android:text="指示灯闪烁"
+            android:layout_marginLeft="@dimen/setting_margin_left"
+            android:layout_centerVertical="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <ch.ielse.view.SwitchView
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/setting_margin_left"
+            android:layout_alignParentRight="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+
+    <View
+        android:layout_marginLeft="@dimen/setting_margin_left"
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/part_linear_color"/>
+    <RelativeLayout
+        android:background="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/setting_item_height">
+        <TextView
+            android:textColor="@color/share_text"
+            android:text="允许他人评价"
+            android:layout_marginLeft="@dimen/setting_margin_left"
+            android:layout_centerVertical="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <ch.ielse.view.SwitchView
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/setting_margin_left"
             android:layout_alignParentRight="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
@@ -169,26 +145,7 @@
         android:layout_width="match_parent"
         android:layout_height="1px"
         android:background="@color/part_linear_color"/>
-    <View
-        android:background="@color/going_unfinsh_color"
-        android:layout_width="match_parent"
-        android:layout_height="30dp"/>
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1px"
-        android:background="@color/part_linear_color"/>
-    <TextView
-        android:clickable="true"
-        android:id="@+id/tv_exit_login"
-        android:background="@drawable/item_message_selector"
-        android:gravity="center"
-        android:textColor="#e51e1e"
-        android:text="退出登录"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/setting_item_height" />
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1px"
-        android:background="@color/part_linear_color"/>
+
+
 
 </LinearLayout>

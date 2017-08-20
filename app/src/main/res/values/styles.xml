@@ -3,8 +3,8 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/color_primary</item>
-        <item name="colorPrimaryDark">@color/color_dark</item>
+        <item name="colorPrimary">@color/color_accent</item>
+        <item name="colorPrimaryDark">@color/color_accent</item>
         <item name="colorAccent">@color/color_accent</item>
     </style>
     <style name="progress_dialog" parent="@android:style/Theme.Dialog">

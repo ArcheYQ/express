@@ -58,7 +58,7 @@
             android:layout_height="0dp">
             <ImageView
                 android:layout_marginLeft="10dp"
-                android:src="@drawable/password"
+                android:src="@drawable/password_login"
                 android:layout_centerVertical="true"
                 android:layout_width="20dp"
                 android:layout_height="20dp" />
@@ -78,6 +78,16 @@
                 android:layout_height="wrap_content" />
         </RelativeLayout>
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_register"
+        android:layout_marginBottom="10dp"
+        android:text="注册并登陆"
+        android:layout_marginRight="20dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
 
 </RelativeLayout>

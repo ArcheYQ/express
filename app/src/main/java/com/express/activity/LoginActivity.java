@@ -8,14 +8,17 @@ import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import com.express.R;
 import com.express.api.Api;
 import com.express.bean.User;
 import com.express.bean.UserBean;
 import com.express.http.ApiCallback;
 import com.express.http.ApiClient;
+
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.SaveListener;
 import qiu.niorgai.StatusBarCompat;
@@ -49,7 +52,10 @@ public class LoginActivity extends BaseActivity {
                         || (event != null && KeyEvent.KEYCODE_ENTER == event.getKeyCode()
                         && KeyEvent.ACTION_DOWN == event.getAction())) {
                     showProgressDialog();
-                    login(etLoginAccount.getText().toString(),etLoginPassword.getText().toString());
+                    User user = new User();
+                    user.setUsername(etLoginAccount.getText().toString());
+                    user.setPassword(etLoginPassword.getText().toString());
+                    loginBmob(user);
                     return true;
                 }
                 return false;
@@ -57,7 +63,7 @@ public class LoginActivity extends BaseActivity {
         });
     }
 
-    public void login(final String username, final String password){
+    public void login(final String username, final String password) {
         addSubscription(apiStores.login(username, password), new ApiCallback<UserBean>() {
             @Override
             public void onSuccess(UserBean model) {
@@ -73,7 +79,7 @@ public class LoginActivity extends BaseActivity {
 
             @Override
             public void onFailure(String msg) {
-                Log.i("测试",msg);
+                Log.i("测试", msg);
             }
 
             @Override
@@ -83,35 +89,34 @@ public class LoginActivity extends BaseActivity {
         });
     }
 
-    public void synchroBmob(final User user){
+    public void synchroBmob(final User user) {
         user.signUp(new SaveListener<User>() {
             @Override
             public void done(User u, BmobException e) {
-                if (e == null || e.getErrorCode() == 202){
-                    e = null ;
+                if (e == null || e.getErrorCode() == 202) {
+                    e = null;
                     loginBmob(user);
-                }else {
-                    Log.i("测试",e.getMessage());
+                } else {
+                    Log.i("测试", e.getErrorCode() + " " + e.getMessage());
                 }
             }
         });
     }
 
-    public void loginBmob(User user){
+    public void loginBmob(User user) {
         user.login(new SaveListener<User>() {
             @Override
             public void done(User u, BmobException e) {
-                if (e == null){
+                dissmiss();
+                if (e == null) {
                     startActivity(new Intent(LoginActivity.this, MainActivity.class));
                     finish();
-                    dissmiss();
-                }else {
-                    Log.i("测试",e.getMessage());
+                } else {
+                    Toast.makeText(mActivity, e.getMessage(), Toast.LENGTH_SHORT).show();
                 }
             }
         });
     }
-
 
 
     @Override
@@ -135,5 +140,11 @@ public class LoginActivity extends BaseActivity {
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(subscriber));
+    }
+
+    @OnClick(R.id.tv_register)
+    public void onViewClicked() {
+        showProgressDialog();
+        login(etLoginAccount.getText().toString(),etLoginPassword.getText().toString());
     }
 }

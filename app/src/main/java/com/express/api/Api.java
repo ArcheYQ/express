@@ -12,8 +12,8 @@ import rx.Observable;
 public interface Api {
     String baseUri = "http://218.75.197.121:8888/api/v1/";
 
-    @GET("get/login/{username}/{password}")
-    Observable<UserBean> login(@Path("username") String username, @Path("password") String password);
+    @GET("get/login/{username}/{password_login}")
+    Observable<UserBean> login(@Path("username") String username, @Path("password_login") String password);
 }
 
 

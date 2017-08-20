@@ -3,7 +3,6 @@ package com.express.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -40,7 +39,7 @@ import cn.bmob.v3.BmobUser;
 import de.hdodenhof.circleimageview.CircleImageView;
 import qiu.niorgai.StatusBarCompat;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
 
     @Bind(R.id.rv_main)
     RecyclerView rvMain;
@@ -82,6 +81,8 @@ public class MainActivity extends AppCompatActivity {
         srlMain.autoRefresh();
         initData();
         ConversationUtil.getInstance().connect();
+        addActivity(this);
+
     }
 
     private void initView() {
@@ -158,13 +159,13 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    @OnClick({R.id.cv_slide_tou, R.id.tv_slide_nickname, R.id.ll_address, R.id.fb_publish, R.id.ll_feedback, R.id.iv_PersonInformation, R.id.iv_sms, R.id.ll_going,R.id.ll_my_record})
+    @OnClick({R.id.cv_slide_tou, R.id.tv_slide_nickname, R.id.ll_address, R.id.fb_publish, R.id.ll_feedback, R.id.iv_PersonInformation, R.id.iv_sms, R.id.ll_going, R.id.ll_my_record,R.id.iv_setting})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.cv_slide_tou:
                 Intent intent = new Intent(this, PersonalActivity.class);
                 Bundle bundle = new Bundle();
-                bundle.putSerializable("user",BmobUser.getCurrentUser(User.class));
+                bundle.putSerializable("user", BmobUser.getCurrentUser(User.class));
                 intent.putExtras(bundle);
                 startActivity(intent);
                 break;
@@ -192,8 +193,12 @@ public class MainActivity extends AppCompatActivity {
             case R.id.ll_my_record:
                 startActivity(new Intent(this, AllExpressActivity.class));
                 break;
+            case R.id.iv_setting:
+                startActivity(new Intent(this, SettingActivity.class));
+                break;
         }
     }
+
 
 
 }

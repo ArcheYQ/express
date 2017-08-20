@@ -12,7 +12,9 @@
     <color name="going_unfinsh_color">#edebeb</color>
     <color name="dsa">#f8a370</color>
     <color name="blue_balloon">#7bc9fc</color>
+    <color name="exit_login_text">#e51e1e</color>
     <color name="base_color_text_black">#3e3e39</color>
     <color name="base_color_text_white">#ffffff</color>
     <color name="color_line">#dadada</color>
+
 </resources>
