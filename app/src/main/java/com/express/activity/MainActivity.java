@@ -63,6 +63,8 @@ public class MainActivity extends BaseActivity {
     ImageView ivSms;
     @Bind(R.id.ll_going)
     LinearLayout llGoing;
+    @Bind(R.id.ll_reputation)
+    LinearLayout llReputation;
     private int page = 0;
     ExpressAdapter adapter;
 
@@ -92,7 +94,7 @@ public class MainActivity extends BaseActivity {
                 ExpressUtil.getInstance().queryExpressHelp(0, new ExpressUtil.QueryListener() {
                     @Override
                     public void complete(List<ExpressHelp> expressHelps) {
-                        adapter.setList(expressHelps);
+                        adapter.setList(expressHelps,true);
                         page = 1;
                         refreshlayout.finishRefresh();
                     }
@@ -112,7 +114,7 @@ public class MainActivity extends BaseActivity {
                     @Override
                     public void complete(List<ExpressHelp> expressHelps) {
                         refreshlayout.finishLoadmore();
-                        adapter.setList(expressHelps);
+                        adapter.addData(expressHelps);
                         page++;
                     }
 
@@ -159,7 +161,7 @@ public class MainActivity extends BaseActivity {
 
     }
 
-    @OnClick({R.id.cv_slide_tou, R.id.tv_slide_nickname, R.id.ll_address, R.id.fb_publish, R.id.ll_feedback, R.id.iv_PersonInformation, R.id.iv_sms, R.id.ll_going, R.id.ll_my_record,R.id.iv_setting})
+    @OnClick({R.id.cv_slide_tou, R.id.tv_slide_nickname, R.id.ll_address, R.id.fb_publish, R.id.ll_feedback, R.id.iv_PersonInformation, R.id.iv_sms, R.id.ll_going, R.id.ll_my_record, R.id.iv_setting, R.id.ll_reputation})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.cv_slide_tou:
@@ -196,9 +198,11 @@ public class MainActivity extends BaseActivity {
             case R.id.iv_setting:
                 startActivity(new Intent(this, SettingActivity.class));
                 break;
+            case R.id.ll_reputation:
+                startActivity(new Intent(this, ReputationActivity.class));
+                break;
         }
     }
-
-
-
 }
+
+

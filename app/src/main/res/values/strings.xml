@@ -1,7 +1,7 @@
 <resources>
 
     <string name="underline_text"><u>规则说明</u></string>
-    <string name="app_name">express</string>
+    <string name="app_name">快递帮</string>
     <string-array name="dormitory">
         <item name="dormitory_0">宿舍</item>
         <item name="dormitory_1">1-5栋</item>

@@ -207,9 +207,10 @@ public class PersonalActivity extends BaseActivity {
     }
 
     public void synchroUser(String path) {
-        User newUser = new User();
-        newUser.setBackground(path);
+
         User bmobUser = BmobUser.getCurrentUser(User.class);
+        User newUser = new User(bmobUser.getSum(),bmobUser.getHelpSum());
+        newUser.setBackground(path);
         newUser.update(bmobUser.getObjectId(), new UpdateListener() {
             @Override
             public void done(BmobException e) {
@@ -431,9 +432,10 @@ public class PersonalActivity extends BaseActivity {
 
 
     public void updateHead(final String path) {
-        User newUser = new User();
-        newUser.setHeadPicThumb(path);
+
         User bmobUser = User.getCurrentUser(User.class);// 获得当前登陆的用户
+        User newUser = new User(bmobUser.getSum(),bmobUser.getHelpSum());
+        newUser.setHeadPicThumb(path);
         newUser.update(bmobUser.getObjectId(), new UpdateListener() {
             @Override
             public void done(BmobException e) {

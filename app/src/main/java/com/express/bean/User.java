@@ -22,7 +22,7 @@ public class User extends BmobUser {
     private String headPicThumb;
     private String profile;
     private String background;
-    private String sum;
+    private int sum;
 
     public String[] getComment() {
         return comment;
@@ -33,20 +33,20 @@ public class User extends BmobUser {
     }
 
     private String[] comment;
-    public String getHelpSum() {
+    public int getHelpSum() {
         return helpSum;
     }
 
-    public void setHelpSum(String helpSum) {
+    public void setHelpSum(int helpSum) {
         this.helpSum = helpSum;
     }
 
-    private String helpSum;
-    public String getSum() {
+    private int helpSum;
+    public int getSum() {
         return sum;
     }
 
-    public void setSum(String sum) {
+    public void setSum(int sum) {
         this.sum = sum;
     }
 
@@ -56,6 +56,11 @@ public class User extends BmobUser {
 
     public void setProfile(String profile) {
         this.profile = profile;
+    }
+
+    public User(int sum, int helpSum){
+        this.sum =sum;
+        this.helpSum = helpSum;
     }
 
     public User(){
@@ -74,7 +79,8 @@ public class User extends BmobUser {
         gender  = dataBean.getSex();
         userId = dataBean.getUser_id();
         headPicThumb = "http://218.75.197.121:8888"+dataBean.getHead_pic_thumb();
-        sum = ""+0;
+        sum = 0;
+        helpSum= 5;
     }
 
     public String getNumber() {

@@ -5,16 +5,23 @@ import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.express.R;
+import com.express.bean.ExpressHelp;
 import com.express.bean.User;
+import com.express.util.ExpressUtil;
+import com.express.util.ReputationUtil;
 import com.github.lzyzsd.circleprogress.ArcProgress;
+
+import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+
 import cn.bmob.v3.BmobUser;
 
 public class ReputationActivity extends BaseActivity {
@@ -53,17 +60,49 @@ public class ReputationActivity extends BaseActivity {
         setToolBar(R.id.tb_reputation);
         initHome();
         User user = BmobUser.getCurrentUser(User.class);
-        if (TextUtils.isEmpty(user.getHelpSum())) {
-            tvReputationValues.setText("剩余可请求帮助次数：0");
-        } else {
-            tvReputationValues.setText("剩余可请求帮助次数：" + user.getHelpSum());
-        }
-        if (TextUtils.isEmpty(user.getSum())) {
+        if (user.getSum()==0) {
             tvReputationValues.setText("当前荣誉值：0");
         } else {
             tvReputationValues.setText("当前荣誉值：" + user.getSum());
         }
+
+        if (user.getHelpSum()==0) {
+            tvResidueHelp.setText("剩余可请求帮助次数：0");
+        } else {
+            tvResidueHelp.setText("剩余可请求帮助次数：" + user.getHelpSum());
+        }
+        int progress = 0;
+        if (user.getSum() <5){
+            progress = (5-user.getSum())*100/5;
+            ivLevel0.setVisibility(View.VISIBLE);
+        }else if (user.getSum() <20){
+            progress = (20-user.getSum())*100/20;
+            ivLevel1.setVisibility(View.VISIBLE);
+        }else if (user.getSum() <40){
+            progress = (40-user.getSum())*100/40;
+            ivLevel2.setVisibility(View.VISIBLE);
+        }else if (user.getSum() <65){
+            progress = (65-user.getSum())*100/65;
+            ivLevel3.setVisibility(View.VISIBLE);
+        }else if (user.getSum() <95){
+            progress = (95-user.getSum())*100/95;
+            ivLevel4.setVisibility(View.VISIBLE);
+        }else if (user.getSum() <130) {
+            progress = (130-user.getSum())*100/130;
+            ivLevel5.setVisibility(View.VISIBLE);
+        }else{
+            progress = 0;
+            ivLevel6.setVisibility(View.VISIBLE);
+        }
+        arcProgress.setProgress(progress);
+        arcProgress.setBottomText("距升级还差"+progress+"%");
+        arcProgress.setBottomTextSize(28);
     }
+
+
+
+
+
 
     private void showNormalDialog() {
         /* @setIcon 设置对话框图标

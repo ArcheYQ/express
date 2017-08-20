@@ -60,9 +60,10 @@ public class ProfileActivity extends BaseActivity {
                 break;
             case R.id.tv_profile_complete:
                 showProgressDialog();
-                User newUser = new User();
-                newUser.setProfile(etNewProfile.getText().toString());
+
                 User bmobUser = User.getCurrentUser(User.class);// 获得当前登陆的用户
+                User newUser = new User(bmobUser.getSum(),bmobUser.getHelpSum());
+                newUser.setProfile(etNewProfile.getText().toString());
                 newUser.update(bmobUser.getObjectId(),new UpdateListener() {
                     @Override
                     public void done(BmobException e) {

@@ -86,7 +86,7 @@
                     android:maxLines="1"
                     android:gravity="center_vertical"
                     android:textSize="13sp"
-                    android:hint="猪头倩"
+                    android:hint="张三"
                     android:background="@color/white"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent" />
@@ -108,7 +108,7 @@
                     android:maxLines="1"
                     android:gravity="center_vertical"
                     android:textSize="13sp"
-                    android:hint="15273311295"
+                    android:hint="1234567891"
                     android:background="@color/white"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent" />
@@ -251,7 +251,7 @@
                 android:maxLines="1"
                 android:gravity="center_vertical"
                 android:textSize="13sp"
-                android:hint="如东门一号店"
+                android:hint="点击选择宿舍"
                 android:background="@color/white"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent" />
@@ -275,7 +275,7 @@
                 android:maxLines="1"
                 android:gravity="center_vertical"
                 android:textSize="13sp"
-                android:hint="如东门一号店"
+                android:hint="点击选择重量"
                 android:background="@color/white"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent" />
@@ -299,7 +299,7 @@
                 android:maxLines="1"
                 android:gravity="center_vertical"
                 android:textSize="13sp"
-                android:hint="如东门一号店"
+                android:hint="点击选择快递点"
                 android:background="@color/white"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent" />

@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import com.express.R;
 import com.express.bean.ExpressHelp;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -16,10 +17,29 @@ import java.util.List;
 
 public class ExpressAdapter extends RecyclerView.Adapter{
 
-    public void setList(List<ExpressHelp> list) {
-        this.list = list;
-        list.add(0,new ExpressHelp());
-        notifyDataSetChanged();
+    List<ExpressHelp> oldList;
+
+    public void setList(List<ExpressHelp> list,boolean isNeedChange) {
+        if (list != null){
+            this.list = list;
+            if (isNeedChange){
+                oldList = new ArrayList<>();
+                for (ExpressHelp expressHelp : list) {
+                    oldList.add(expressHelp);
+                }
+            }
+            list.add(0,new ExpressHelp());
+            notifyDataSetChanged();
+        }
+
+    }
+
+    public void addData(List<ExpressHelp> list){
+        for (ExpressHelp expressHelp : list) {
+            this.list.add(expressHelp);
+            oldList.add(expressHelp);
+            notifyItemInserted(getItemCount()-1);
+        }
     }
 
     List<ExpressHelp> list;
@@ -29,6 +49,8 @@ public class ExpressAdapter extends RecyclerView.Adapter{
     public ExpressAdapter(List<ExpressHelp> list , Context context){
         this.list = list;
         this.context = context;
+
+
     }
 
     @Override
@@ -54,7 +76,7 @@ public class ExpressAdapter extends RecyclerView.Adapter{
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         if (holder instanceof AdvertiseViewHolder){
             AdvertiseViewHolder advertiseViewHolder = (AdvertiseViewHolder) holder;
-            advertiseViewHolder.load();
+            advertiseViewHolder.load(this,oldList);
         }else {
             ExpressViewHolder expressViewHolder = (ExpressViewHolder) holder;
             expressViewHolder.load(context , list.get(position));
