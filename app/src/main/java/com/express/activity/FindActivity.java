@@ -1,5 +1,6 @@
 package com.express.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
@@ -72,7 +73,7 @@ public class FindActivity extends BaseActivity {
                             dissmiss();
                             if (e == null) {
                                 if (list.size() == 0) {
-                                    Toast.makeText(mActivity, "嘤嘤嘤，连人家学号都不记得了吗？⁄(⁄ ⁄•⁄ω⁄•⁄ ⁄)⁄", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(mActivity, "学号错误或者对方并没有使用此应用程序", Toast.LENGTH_SHORT).show();
                                 } else {
                                     Glide.with(FindActivity.this)
                                             .load(list.get(0).getHeadPicThumb())
@@ -90,11 +91,11 @@ public class FindActivity extends BaseActivity {
                 break;
             case R.id.rl_info:
                 if (user != null){
-                    BmobIMUserInfo info = new BmobIMUserInfo();
-                    info.setAvatar(user.getHeadPicThumb());
-                    info.setName(user.getNickname());
-                    info.setUserId(user.getObjectId());
-                    ConversationUtil.getInstance().OpenWindow(info,this);
+                    Intent intent = new Intent(this,PersonalActivity.class);
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable("user",user);
+                    intent.putExtras(bundle);
+                    startActivity(intent);
                 }
 
                 break;

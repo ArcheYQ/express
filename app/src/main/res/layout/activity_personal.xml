@@ -16,7 +16,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true">
         <RelativeLayout
             android:layout_width="match_parent"
@@ -238,6 +237,7 @@
                     android:textSize="13sp"/>
             </LinearLayout>
             <LinearLayout
+                android:id="@+id/ll_flower"
                 android:background="@drawable/zhu"
                 android:orientation="vertical"
                 android:layout_marginTop="600dp"
@@ -263,48 +263,57 @@
                         android:textSize="15sp"
                         />
                 </LinearLayout>
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="黄雅倩："
-                    android:textColor="@color/black"
-                    android:textSize="13sp"
-                    android:layout_marginTop="12dp"
-                    android:layout_marginLeft="10dp"/>
-                <TextView
-                    android:layout_alignParentRight="true"
-                    android:layout_marginRight="10dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="6-30"
-                    android:textColor="@color/black"
-                    android:textSize="13sp"
-                    android:layout_marginTop="12dp"
-                    />
-                <TextView
-                    android:ellipsize="end"
-                    android:maxLines="3"
-                    android:layout_marginTop="33dp"
-                    android:layout_width="260dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-                    android:text="一月你还没有出现 二月你睡在隔壁 三月下起了大雨 四月里遍地蔷薇 五月我们对面坐着 犹如梦中 就这样到了六月 " />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/tv_flower_name1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="12dp"
+                        android:textColor="@color/black"
+                        android:textSize="13sp" />
+
+                    <TextView
+                        android:id="@+id/tv_flower_time1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginTop="12dp"
+                        android:textColor="@color/black"
+                        android:textSize="13sp" />
+
+                    <TextView
+                        android:id="@+id/tv_flower_comment1"
+                        android:layout_width="260dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="33dp"
+                        android:ellipsize="end"
+                        android:maxLines="3"
+                       />
 
 
-            </RelativeLayout>
+                </RelativeLayout>
+
                 <View
+
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="5dp"
                     android:background="#7e7777"
                     android:layout_width="280dp"
                     android:layout_height="1px"/>
                 <RelativeLayout
+                    android:id="@+id/rl_comment2"
+                    android:visibility="gone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
                     <TextView
+                        android:id="@+id/tv_flower_name2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="黄雅倩："
@@ -313,6 +322,7 @@
                         android:layout_marginTop="12dp"
                         android:layout_marginLeft="10dp"/>
                     <TextView
+                        android:id="@+id/tv_flower_time2"
                         android:layout_alignParentRight="true"
                         android:layout_marginRight="10dp"
                         android:layout_width="wrap_content"
@@ -323,6 +333,7 @@
                         android:layout_marginTop="12dp"
                         />
                     <TextView
+                        android:id="@+id/tv_flower_comment2"
                         android:ellipsize="end"
                         android:maxLines="3"
                         android:layout_marginTop="33dp"
@@ -334,15 +345,20 @@
 
                 </RelativeLayout>
                 <View
+                    android:visibility="gone"
+                    android:id="@+id/vv_flower2"
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="5dp"
                     android:background="#7e7777"
                     android:layout_width="280dp"
                     android:layout_height="1px"/>
                 <RelativeLayout
+                    android:id="@+id/rl_comment3"
+                    android:visibility="gone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
                     <TextView
+                        android:id="@+id/tv_flower_name3"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="黄雅倩："
@@ -351,6 +367,7 @@
                         android:layout_marginTop="12dp"
                         android:layout_marginLeft="10dp"/>
                     <TextView
+                        android:id="@+id/tv_flower_time3"
                         android:layout_alignParentRight="true"
                         android:layout_marginRight="10dp"
                         android:layout_width="wrap_content"
@@ -361,6 +378,7 @@
                         android:layout_marginTop="12dp"
                         />
                     <TextView
+                        android:id="@+id/tv_flower_comment3"
                         android:ellipsize="end"
                         android:maxLines="3"
                         android:layout_marginTop="33dp"
@@ -372,6 +390,8 @@
 
                 </RelativeLayout>
                 <View
+                    android:visibility="gone"
+                    android:id="@+id/vv_flower3"
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="5dp"
                     android:background="#7e7777"

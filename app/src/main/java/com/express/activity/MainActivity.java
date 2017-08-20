@@ -76,10 +76,10 @@ public class MainActivity extends AppCompatActivity {
         rvMain.setLayoutManager(new LinearLayoutManager(this));
         rvMain.setItemAnimator(new DefaultItemAnimator());
         List<ExpressHelp> list = new ArrayList<>();
-        srlMain.autoRefresh();
         adapter = new ExpressAdapter(list, this);
         rvMain.setAdapter(adapter);
         initView();
+        srlMain.autoRefresh();
         initData();
         ConversationUtil.getInstance().connect();
     }
@@ -162,7 +162,11 @@ public class MainActivity extends AppCompatActivity {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.cv_slide_tou:
-                startActivity(new Intent(this, PersonalActivity.class));
+                Intent intent = new Intent(this, PersonalActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("user",BmobUser.getCurrentUser(User.class));
+                intent.putExtras(bundle);
+                startActivity(intent);
                 break;
             case R.id.tv_slide_nickname:
                 startActivity(new Intent(this, NicknameActivity.class));

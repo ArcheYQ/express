@@ -2,6 +2,7 @@ package com.express.http;
 
 
 import com.express.api.Api;
+import com.google.gson.Gson;
 
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
@@ -30,7 +31,7 @@ public class ApiClient {
             OkHttpClient okHttpClient = builder.build();
             mRetrofit = new Retrofit.Builder()
                     .baseUrl(Api.baseUri)
-                    .addConverterFactory(GsonConverterFactory.create())
+                    .addConverterFactory(GsonConverterFactory.create(new Gson()))
                     .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                     .client(okHttpClient)
                     .build();

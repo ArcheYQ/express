@@ -103,7 +103,12 @@ public class ConversationActivity extends BaseActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        startActivity(new Intent(this, FindActivity.class));
+        if (item.getItemId() == R.id.find){
+            startActivity(new Intent(this, FindActivity.class));
+            finish();
+            return true;
+        }
+
         return super.onOptionsItemSelected(item);
     }
 }

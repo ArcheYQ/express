@@ -17,6 +17,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,6 +25,7 @@ import com.bigkoo.alertview.AlertView;
 import com.bigkoo.alertview.OnItemClickListener;
 import com.bumptech.glide.Glide;
 import com.express.R;
+import com.express.bean.Comment;
 import com.express.bean.User;
 import com.express.other.CacheManager;
 import com.express.util.ConversationUtil;
@@ -33,15 +35,21 @@ import com.zxy.tiny.Tiny;
 import com.zxy.tiny.callback.FileCallback;
 
 import java.io.File;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import cn.bmob.newim.bean.BmobIMUserInfo;
+import cn.bmob.v3.BmobQuery;
 import cn.bmob.v3.BmobUser;
 import cn.bmob.v3.datatype.BmobFile;
 import cn.bmob.v3.exception.BmobException;
+import cn.bmob.v3.listener.FindListener;
+import cn.bmob.v3.listener.SaveListener;
 import cn.bmob.v3.listener.UpdateListener;
 import cn.bmob.v3.listener.UploadFileListener;
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -84,8 +92,36 @@ public class PersonalActivity extends BaseActivity {
     Button btnPersonChat;
     @Bind(R.id.btn_person_flower)
     Button btnPersonFlower;
+    @Bind(R.id.ll_flower)
+    LinearLayout llFlower;
+    @Bind(R.id.tv_flower_name1)
+    TextView tvFlowerName1;
+    @Bind(R.id.tv_flower_time1)
+    TextView tvFlowerTime1;
+    @Bind(R.id.tv_flower_comment1)
+    TextView tvFlowerComment1;
+    @Bind(R.id.tv_flower_name2)
+    TextView tvFlowerName2;
+    @Bind(R.id.tv_flower_time2)
+    TextView tvFlowerTime2;
+    @Bind(R.id.tv_flower_comment2)
+    TextView tvFlowerComment2;
+    @Bind(R.id.tv_flower_name3)
+    TextView tvFlowerName3;
+    @Bind(R.id.tv_flower_time3)
+    TextView tvFlowerTime3;
+    @Bind(R.id.tv_flower_comment3)
+    TextView tvFlowerComment3;
+    @Bind(R.id.vv_flower2)
+    View vvFlower2;
+    @Bind(R.id.vv_flower3)
+    View vvFlower3;
+    @Bind(R.id.rl_comment2)
+    RelativeLayout rlComment2;
+    @Bind(R.id.rl_comment3)
+    RelativeLayout rlComment3;
     private User user;
-
+    private boolean isSelf;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -93,14 +129,20 @@ public class PersonalActivity extends BaseActivity {
         StatusBarCompat.translucentStatusBar(this);
         setContentView(R.layout.activity_personal);
         ButterKnife.bind(this);
+        user = (User) getIntent().getSerializableExtra("user");
+        isSelf = BmobUser.getCurrentUser(User.class).getObjectId().equals(user.getObjectId());
         initData();
         setToolBar(R.id.tb_personal);
         initWhiteHome();
         loadBackground();
+        if (isSelf) {
+            btnPersonChat.setVisibility(View.GONE);
+            btnPersonFlower.setVisibility(View.GONE);
+        }
     }
 
     public void loadBackground() {
-        String background = BmobUser.getCurrentUser(User.class).getBackground();
+        String background = user.getBackground();
         if (!TextUtils.isEmpty(background)) {
             Glide.with(this)
                     .load(background)
@@ -110,8 +152,13 @@ public class PersonalActivity extends BaseActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_personal, menu);
-        return true;
+        if (isSelf) {
+            getMenuInflater().inflate(R.menu.menu_personal, menu);
+            return true;
+        } else {
+            return super.onCreateOptionsMenu(menu);
+        }
+
     }
 
     @Override
@@ -184,7 +231,6 @@ public class PersonalActivity extends BaseActivity {
     }
 
     private void initData() {
-        User user = BmobUser.getCurrentUser(User.class);
         tvTrueName.setText(user.getName());
         tvSex.setText(user.getGender());
         tvClass.setText(user.getClassName());
@@ -192,40 +238,102 @@ public class PersonalActivity extends BaseActivity {
         tvNickname.setText(user.getNickname());
         tvStudentId.setText(user.getUsername());
         tvCollege.setText(user.getDepName());
+        BmobQuery<Comment> query = new BmobQuery<Comment>();
+        query.setLimit(3);
+        query.addWhereEqualTo("user",user);
+        query.order("-createdAt");
+        query.findObjects(new FindListener<Comment>() {
+            @Override
+            public void done(List<Comment> list, BmobException e) {
+                if (e==null){
+                    if (list != null){
+                        if (list.size() > 0 && list.get(0)!= null) {
+                            String[] str1 = list.get(0).getComment().split("#", 3);
+                            tvFlowerName1.setText(str1[0]);
+                            SimpleDateFormat format1 = new SimpleDateFormat("MM-dd");
+                            tvFlowerTime1.setText(format1.format(new Date(Long.parseLong(str1[1]))));
+                            tvFlowerComment1.setText(str1[2]);
+
+                            if (list.size() > 1 && list.get(1)!= null) {
+                                rlComment2.setVisibility(View.VISIBLE);
+                                vvFlower2.setVisibility(View.VISIBLE);
+                                String[] str2 = list.get(1).getComment().split("#", 3);
+                                tvFlowerName2.setText(str2[0]);
+                                SimpleDateFormat format2 = new SimpleDateFormat("MM-dd");
+                                tvFlowerTime2.setText(format2.format(new Date(Long.parseLong(str2[1]))));
+                                tvFlowerComment2.setText(str2[2]);
+                            }
+                            if (list.size() > 2 && list.get(2)!= null) {
+                                vvFlower3.setVisibility(View.VISIBLE);
+                                rlComment3.setVisibility(View.VISIBLE);
+                                String[] str3 = list.get(2).getComment().split("#", 3);
+                                tvFlowerName3.setText(str3[0]);
+                                SimpleDateFormat format3 = new SimpleDateFormat("MM-dd");
+                                tvFlowerTime3.setText(format3.format(new Date(Long.parseLong(str3[1]))));
+                                tvFlowerComment3.setText(str3[2]);
+                            }
+                        } else {
+                            tvFlowerName1.setText("当前评价为空~快来评价吧");
+                        }
+                    }else {
+                        Log.i("Test","评论为空");
+                        tvFlowerName1.setText("当前评价为空~快来评价吧");
+                    }
+                }else {
+                    Toast.makeText(mActivity, e.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+
         Glide.with(this)
                 .load(user.getHeadPicThumb())
                 .into(cmPerson);
-        Log.i("照片", user.getHeadPicThumb());
         if (TextUtils.isEmpty(user.getProfile())) {
-            tvIntroduction.setText("编辑个人简介");
+           if (isSelf){
+               tvIntroduction.setText("编辑个人简介");
+           }else{
+               tvIntroduction.setText("对方没有写个人简介");
+           }
         } else {
             tvIntroduction.setText(user.getProfile());
         }
     }
 
 
-    @OnClick({R.id.cm_person, R.id.ll_introduction,R.id.btn_person_chat,R.id.btn_person_flower})
+    @OnClick({R.id.cm_person, R.id.ll_introduction, R.id.btn_person_chat, R.id.btn_person_flower, R.id.ll_flower})
     public void onViewClicked(View view) {
         switch (view.getId()) {
+            case R.id.ll_flower:
+                Intent intent = new Intent(this, FlowerActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("user", user);
+                intent.putExtras(bundle);
+                this.startActivity(intent);
+                break;
             case R.id.cm_person:
-                SImagePicker
-                        .from(PersonalActivity.this)
-                        .pickMode(SImagePicker.MODE_AVATAR)
-                        .showCamera(true)
-                        .cropFilePath(
-                                CacheManager.getInstance().getImageInnerCache()
-                                        .getAbsolutePath(AVATAR_FILE_NAME))
-                        .forResult(REQUEST_CODE_AVATAR);
+                if (isSelf) {
+                    SImagePicker
+                            .from(PersonalActivity.this)
+                            .pickMode(SImagePicker.MODE_AVATAR)
+                            .showCamera(true)
+                            .cropFilePath(
+                                    CacheManager.getInstance().getImageInnerCache()
+                                            .getAbsolutePath(AVATAR_FILE_NAME))
+                            .forResult(REQUEST_CODE_AVATAR);
+                }
                 break;
             case R.id.ll_introduction:
-                startActivity(new Intent(this, ProfileActivity.class));
+                if (isSelf) {
+                    startActivity(new Intent(this, ProfileActivity.class));
+                }
                 break;
             case R.id.btn_person_chat:
                 BmobIMUserInfo info = new BmobIMUserInfo();
                 info.setName(user.getNickname());
                 info.setUserId(user.getObjectId());
                 info.setAvatar(user.getHeadPicThumb());
-                ConversationUtil.getInstance().OpenWindow(info,this);
+                ConversationUtil.getInstance().OpenWindow(info, this);
                 break;
             case R.id.btn_person_flower:
                 final EditText etName;
@@ -233,19 +341,38 @@ public class PersonalActivity extends BaseActivity {
                 ViewGroup extView = (ViewGroup) LayoutInflater.from(this).inflate(R.layout.alertext_form, null);
                 etName = (EditText) extView.findViewById(R.id.etName);
                 etName.setHint("请输入你的评价内容");
-                final User user =  BmobUser.getCurrentUser(User.class);
+                final Comment comment = new Comment();
                 mAlertViewExt = new AlertView("提示", "评价该用户！", "取消", null, new String[]{"确定"}, this, AlertView.Style.Alert, new OnItemClickListener() {
                     @Override
                     public void onItemClick(Object o, int position) {
                         if (position == 0) {
-                            if (TextUtils.isEmpty(etName.getText().toString())){
+                            if (TextUtils.isEmpty(etName.getText().toString())) {
                                 Toast.makeText(PersonalActivity.this, "请输入评价", Toast.LENGTH_SHORT).show();
-                            }else {
-                                String comment = user.getName()+"#"+System.currentTimeMillis()+"#"+etName.getText().toString();
+                            } else {
+                                String com = BmobUser.getCurrentUser(User.class).getName() + "#" + System.currentTimeMillis() + "#" + etName.getText().toString();
+                                comment.setUser(user);
+                                comment.setValuer(BmobUser.getCurrentUser(User.class));
+                                comment.setComment(com);
+                                comment.save(new SaveListener<String>() {
+                                    @Override
+                                    public void done(String s, BmobException e) {
+                                        if(e==null){
+                                            Toast.makeText(PersonalActivity.this, "评价成功", Toast.LENGTH_SHORT).show();
+                                            initData();
+                                        }else{
+                                            if(e.getErrorCode()==9016){
+                                                Toast.makeText(PersonalActivity.this, "网络不给力/(ㄒoㄒ)/~~", Toast.LENGTH_SHORT).show();
+                                            }else{
+                                                Toast.makeText(PersonalActivity.this, e.getErrorCode(), Toast.LENGTH_SHORT).show();
+                                            }
+                                        }
+                                    }
+                                });
                             }
 
                         }
                     }
+
                 });
                 final InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
                 etName.setOnFocusChangeListener(new View.OnFocusChangeListener() {
@@ -325,5 +452,6 @@ public class PersonalActivity extends BaseActivity {
 
         });
     }
+
 
 }
