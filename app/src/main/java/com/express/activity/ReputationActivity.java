@@ -4,24 +4,17 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.Toolbar;
-import android.text.TextUtils;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.express.R;
-import com.express.bean.ExpressHelp;
 import com.express.bean.User;
-import com.express.util.ExpressUtil;
-import com.express.util.ReputationUtil;
 import com.github.lzyzsd.circleprogress.ArcProgress;
-
-import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-
 import cn.bmob.v3.BmobUser;
 
 public class ReputationActivity extends BaseActivity {
@@ -95,7 +88,7 @@ public class ReputationActivity extends BaseActivity {
             ivLevel6.setVisibility(View.VISIBLE);
         }
         arcProgress.setProgress(progress);
-        arcProgress.setBottomText("距升级还差"+progress+"%");
+        arcProgress.setBottomText("升级还差"+progress+"%");
         arcProgress.setBottomTextSize(28);
     }
 

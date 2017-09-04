@@ -80,12 +80,15 @@ public class User extends BmobUser {
         gender  = dataBean.getSex();
         if(TextUtils.isEmpty(dataBean.getHead_pic())){
             if (dataBean.getSex().equals("男")){
-                headPic = "http://bmob-cdn-13164.b0.upaiyun.com/2017/09/04/b1b8899cc0934c899bc86f88bafdf302.jpg";            }
+                headPic = "http://bmob-cdn-13164.b0.upaiyun.com/2017/09/04/b1b8899cc0934c899bc86f88bafdf302.jpg";
+                headPicThumb= "http://bmob-cdn-13164.b0.upaiyun.com/2017/09/04/b1b8899cc0934c899bc86f88bafdf302.jpg";}
             else{
                 headPic = "http://bmob-cdn-13164.b0.upaiyun.com/2017/09/04/ebc8bb9661b14708a94e644fe0037901.jpg";
+                headPicThumb = "http://bmob-cdn-13164.b0.upaiyun.com/2017/09/04/ebc8bb9661b14708a94e644fe0037901.jpg";
             }
         }else{
             headPic = "http://218.75.197.121:8888"+dataBean.getHead_pic();
+            headPicThumb = "http://218.75.197.121:8888"+dataBean.getHead_pic_thumb();
         }
 
 

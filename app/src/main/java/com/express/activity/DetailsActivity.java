@@ -114,7 +114,28 @@ public class DetailsActivity extends BaseActivity {
         tvDetailsWeight.setText(express.getWeight());
         isSelf = BmobUser.getCurrentUser(User.class).getObjectId()
                 .equals(express.getUser().getObjectId());
-
+        if(express.getUser().getSum()<5){
+            ivHuangguan.setImageResource(R.drawable.nolevel);
+            ivLevel.setImageResource(R.drawable.ic_userlevel_0);
+        }else if (express.getUser().getSum()<20){
+            ivHuangguan.setImageResource(R.drawable.brass);
+            ivLevel.setImageResource(R.drawable.ic_userlevel_1);
+        }else if(express.getUser().getSum()<40){
+            ivLevel.setImageResource(R.drawable.ic_userlevel_2);
+            ivHuangguan.setImageResource(R.drawable.brass);
+        }else if (express.getUser().getSum()<65){
+            ivLevel.setImageResource(R.drawable.ic_userlevel_3);
+            ivHuangguan.setImageResource(R.drawable.silver);
+        }else if (express.getUser().getSum()<95){
+            ivHuangguan.setImageResource(R.drawable.silver);
+            ivLevel.setImageResource(R.drawable.ic_userlevel_4);
+        }else if (express.getUser().getSum()<130){
+            ivHuangguan.setImageResource(R.drawable.yellow);
+            ivLevel.setImageResource(R.drawable.ic_userlevel_5);
+        }else {
+            ivHuangguan.setImageResource(R.drawable.yellow);
+            ivLevel.setImageResource(R.drawable.ic_userlevel_6);
+        }
         if (express.isState()) {
             cvHide.setVisibility(View.VISIBLE);
             btnHelp.setText("已经完成");

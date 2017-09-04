@@ -88,76 +88,77 @@ public class AdvertiseViewHolder extends RecyclerView.ViewHolder {
             slider.addSlider(mTextSlideView2);
             slider.addSlider(mTextSlideView3);
             isLoad = true;
-            srDormitory.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                @Override
-                public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                    switch (position){
-                        case 0:dormitory = "";break;
-                        case 1:dormitory = "1-5栋";break;
-                        case 2:dormitory = "6-10栋";break;
-                        case 3:dormitory = "11-15栋";break;
-                        case 4:dormitory = "16-20栋";break;
-                        case 5:dormitory = "21-23栋";break;
-                        case 6:dormitory = "24-29栋";break;
-                        case 7:dormitory = "30-32栋";break;
-                        case 8:dormitory = "33-35栋";break;
-
-                    }
-                    adapter.setList(screenData(oldList),false);
-                }
-
-                @Override
-                public void onNothingSelected(AdapterView<?> parent) {
-
-                }
-
-            });
-            srPoint.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                @Override
-                public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                    switch (position){
-                        case 0:point = "";break;
-                        case 1:point = "东门";break;
-                        case 2:point = "三食堂";break;
-                        case 3:point = "五食堂";break;
-                        case 4:point = "一食堂";break;
-                        case 5:point = "冶金楼";break;
-                        case 6:point = "唯品会";break;
-                        case 7:point = "聚美优品";break;
-                        case 8:point = "其他";break;
-
-                    }
-                    adapter.setList(screenData(oldList),false);
-                }
-
-                @Override
-                public void onNothingSelected(AdapterView<?> parent) {
-
-                }
-
-            });
-
-            srWeight.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                @Override
-                public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                    switch (position){
-                        case 0:weight = "";break;
-                        case 1:weight = "1-3瓶水";break;
-                        case 2:weight = "4-6瓶水";break;
-                        case 3:weight = "6瓶以上";break;
-
-                    }
-                    adapter.setList(screenData(oldList),false);
-                }
-
-                @Override
-                public void onNothingSelected(AdapterView<?> parent) {
-
-                }
-
-            });
 
         }
+
+        srDormitory.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                switch (position){
+                    case 0:dormitory = "";break;
+                    case 1:dormitory = "1-5栋";break;
+                    case 2:dormitory = "6-10栋";break;
+                    case 3:dormitory = "11-15栋";break;
+                    case 4:dormitory = "16-20栋";break;
+                    case 5:dormitory = "21-23栋";break;
+                    case 6:dormitory = "24-29栋";break;
+                    case 7:dormitory = "30-32栋";break;
+                    case 8:dormitory = "33-35栋";break;
+
+                }
+                adapter.setList(screenData(oldList),false);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+        srPoint.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                switch (position){
+                    case 0:point = "";break;
+                    case 1:point = "东门";break;
+                    case 2:point = "三食堂";break;
+                    case 3:point = "五食堂";break;
+                    case 4:point = "一食堂";break;
+                    case 5:point = "冶金楼";break;
+                    case 6:point = "唯品会";break;
+                    case 7:point = "聚美优品";break;
+                    case 8:point = "其他";break;
+
+                }
+                adapter.setList(screenData(oldList),false);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+
+        });
+
+        srWeight.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                switch (position){
+                    case 0:weight = "";break;
+                    case 1:weight = "1-3瓶水";break;
+                    case 2:weight = "4-6瓶水";break;
+                    case 3:weight = "6瓶以上";break;
+
+                }
+                adapter.setList(screenData(oldList),false);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+
+        });
+
 
 
     }

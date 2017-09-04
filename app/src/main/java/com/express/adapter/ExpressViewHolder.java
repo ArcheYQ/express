@@ -67,6 +67,49 @@ public class ExpressViewHolder extends RecyclerView.ViewHolder {
         tvItemGetAddress.setText(expressHelp.getAddressAccuracy());
         SimpleDateFormat format = new SimpleDateFormat("MM-dd-hh:mm");
         tvItemTime.setText(format.format(new Date(expressHelp.getPublishTime())));
+        if(expressHelp.getUser().getSum()<5){
+            ivHuangguan.setImageResource(R.drawable.nolevel);
+            ivLevel.setImageResource(R.drawable.ic_userlevel_0);
+        }else if (expressHelp.getUser().getSum()<20){
+            ivHuangguan.setImageResource(R.drawable.brass);
+            ivLevel.setImageResource(R.drawable.ic_userlevel_1);
+        }else if(expressHelp.getUser().getSum()<40){
+            ivLevel.setImageResource(R.drawable.ic_userlevel_2);
+            ivHuangguan.setImageResource(R.drawable.brass);
+        }else if (expressHelp.getUser().getSum()<65){
+            ivLevel.setImageResource(R.drawable.ic_userlevel_3);
+            ivHuangguan.setImageResource(R.drawable.silver);
+        }else if (expressHelp.getUser().getSum()<95){
+            ivHuangguan.setImageResource(R.drawable.silver);
+            ivLevel.setImageResource(R.drawable.ic_userlevel_4);
+        }else if (expressHelp.getUser().getSum()<130){
+            ivHuangguan.setImageResource(R.drawable.yellow);
+            ivLevel.setImageResource(R.drawable.ic_userlevel_5);
+        }else {
+            ivHuangguan.setImageResource(R.drawable.yellow);
+            ivLevel.setImageResource(R.drawable.ic_userlevel_6);
+        }
+        switch (expressHelp.getWeight().toString()){
+            case "1-3瓶水" :
+                ivWater1.setVisibility(View.VISIBLE);
+                ivWater2.setVisibility(View.VISIBLE);
+                break;
+            case "4-6瓶水" :
+                ivWater1.setVisibility(View.VISIBLE);
+                ivWater2.setVisibility(View.VISIBLE);
+                ivWater3.setVisibility(View.VISIBLE);
+                ivWater4.setVisibility(View.VISIBLE);
+                break;
+            case "6瓶以上" :
+                ivWater1.setVisibility(View.VISIBLE);
+                ivWater2.setVisibility(View.VISIBLE);
+                ivWater3.setVisibility(View.VISIBLE);
+                ivWater4.setVisibility(View.VISIBLE);
+                ivWater5.setVisibility(View.VISIBLE);
+                ivWater6.setVisibility(View.VISIBLE);
+                break;
+        }
+
         itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

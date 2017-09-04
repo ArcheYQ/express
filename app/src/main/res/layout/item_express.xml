@@ -119,33 +119,39 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <ImageView
+                    android:visibility="gone"
                     android:id="@+id/iv_water6"
                     android:layout_width="20dp"
                     android:layout_height="25dp"
                     android:src="@drawable/water"/>
                 <ImageView
+                    android:visibility="gone"
                     android:id="@+id/iv_water5"
                     android:layout_width="20dp"
                     android:layout_height="25dp"
                     android:src="@drawable/water"/>
                 <ImageView
+                    android:visibility="gone"
                     android:id="@+id/iv_water4"
                     android:layout_width="20dp"
                     android:layout_height="25dp"
                     android:src="@drawable/water"/>
                 <ImageView
+                    android:visibility="gone"
                     android:id="@+id/iv_water3"
                     android:layout_width="20dp"
                     android:layout_height="25dp"
                     android:src="@drawable/water"/>
 
                 <ImageView
+                    android:visibility="gone"
                     android:id="@+id/iv_water2"
                     android:layout_width="20dp"
                     android:layout_height="25dp"
                     android:src="@drawable/water" />
 
                 <ImageView
+                    android:visibility="gone"
                     android:id="@+id/iv_water1"
                     android:layout_width="20dp"
                     android:layout_height="25dp"
