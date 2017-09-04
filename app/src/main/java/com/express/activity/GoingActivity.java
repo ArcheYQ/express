@@ -1,6 +1,7 @@
 package com.express.activity;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
@@ -70,16 +71,16 @@ public class GoingActivity extends BaseActivity {
             @Override
             public void onPageSelected(int position) {
                 if (position == 0){
-                    tvGoingMyHelp.setTextColor(getColor(R.color.color_accent));
-                    tvGoingOtherHelp.setTextColor(getColor(R.color.black));
+                    tvGoingMyHelp.setTextColor(Color.parseColor("#8dc3e6"));
+                    tvGoingOtherHelp.setTextColor(Color.BLACK);
                     currentIndex = 0;
                     LinearLayout.LayoutParams lp = (LinearLayout.LayoutParams) vvGoing.getLayoutParams();
                     lp.leftMargin = 0;
                     vvGoing.setLayoutParams(lp);
 
                 }else if (position == 1){
-                    tvGoingMyHelp.setTextColor(getColor(R.color.black));
-                    tvGoingOtherHelp.setTextColor(getColor(R.color.color_accent));
+                    tvGoingMyHelp.setTextColor(Color.BLACK);
+                    tvGoingOtherHelp.setTextColor(Color.parseColor("#8dc3e6"));
                     currentIndex = 1;
                     LinearLayout.LayoutParams lp = (LinearLayout.LayoutParams) vvGoing.getLayoutParams();
                     lp.leftMargin = screenWidth/4;
@@ -93,8 +94,8 @@ public class GoingActivity extends BaseActivity {
             }
         });
         vpGoing.setCurrentItem(0);
-        tvGoingMyHelp.setTextColor(getColor(R.color.color_accent));
-        tvGoingOtherHelp.setTextColor(getColor(R.color.black));
+        tvGoingMyHelp.setTextColor(Color.parseColor("#8dc3e6"));
+        tvGoingOtherHelp.setTextColor(Color.BLACK);
         currentIndex = 0;
     }
 

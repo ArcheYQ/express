@@ -1,5 +1,6 @@
 package com.express.activity;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
@@ -10,7 +11,6 @@ import android.widget.Toast;
 import com.express.R;
 import com.express.adapter.FlowerAdapter;
 import com.express.bean.Comment;
-
 import com.express.bean.User;
 import com.express.util.FlowerUtil;
 import com.scwang.smartrefresh.header.DeliveryHeader;
@@ -97,7 +97,7 @@ public class FlowerActivity extends BaseActivity {
             }
         }).setRefreshHeader(new DeliveryHeader(this));
         srFlower.setHeaderHeight(150);
-        srFlower.setPrimaryColors(getColor(R.color.color_accent));
+        srFlower.setPrimaryColors(Color.parseColor("#8dc3e6"));
         srFlower.setRefreshFooter(new BallPulseFooter(this).setSpinnerStyle(SpinnerStyle.Scale));
     }
 }

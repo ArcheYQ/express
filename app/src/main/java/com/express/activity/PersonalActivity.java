@@ -164,13 +164,18 @@ public class PersonalActivity extends BaseActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.update_background) {
-            SImagePicker
-                    .from(this)
-                    .maxCount(1)
-                    .rowCount(3)
-                    .showCamera(true)
-                    .pickMode(SImagePicker.MODE_IMAGE)
-                    .forResult(REQUEST_CODE_IMAGE);
+            if (getCcamra() && getStorage()){
+                SImagePicker
+                        .from(this)
+                        .maxCount(1)
+                        .rowCount(3)
+                        .showCamera(true)
+                        .pickMode(SImagePicker.MODE_IMAGE)
+                        .forResult(REQUEST_CODE_IMAGE);
+            }else {
+                Toast.makeText(this, "请给予权限", Toast.LENGTH_SHORT).show();
+            }
+           
             return true;
         }
         return super.onOptionsItemSelected(item);
@@ -314,14 +319,19 @@ public class PersonalActivity extends BaseActivity {
                 break;
             case R.id.cm_person:
                 if (isSelf) {
-                    SImagePicker
-                            .from(PersonalActivity.this)
-                            .pickMode(SImagePicker.MODE_AVATAR)
-                            .showCamera(true)
-                            .cropFilePath(
-                                    CacheManager.getInstance().getImageInnerCache()
-                                            .getAbsolutePath(AVATAR_FILE_NAME))
-                            .forResult(REQUEST_CODE_AVATAR);
+                    if(getCcamra()&&getStorage()){
+                        SImagePicker
+                                .from(PersonalActivity.this)
+                                .pickMode(SImagePicker.MODE_AVATAR)
+                                .showCamera(true)
+                                .cropFilePath(
+                                        CacheManager.getInstance().getImageInnerCache()
+                                                .getAbsolutePath(AVATAR_FILE_NAME))
+                                .forResult(REQUEST_CODE_AVATAR);
+                    }else{
+                        Toast.makeText(mActivity, "请给予权限", Toast.LENGTH_SHORT).show();
+                    }
+
                 }
                 break;
             case R.id.ll_introduction:
