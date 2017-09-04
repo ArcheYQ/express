@@ -9,7 +9,7 @@
         android:id="@+id/iv_login_background"
         android:fitsSystemWindows="false"
         android:scaleType="centerCrop"
-        android:src="@drawable/mainbg"
+        android:src="@drawable/bg_2222"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_alignParentTop="true"
@@ -21,7 +21,7 @@
         android:orientation="vertical"
         android:layout_marginTop="260dp"
         android:layout_width="280dp"
-        android:layout_height="80dp"
+        android:layout_height="100dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true">
         <RelativeLayout
@@ -49,6 +49,8 @@
                 android:layout_height="wrap_content" />
         </RelativeLayout>
         <View
+            android:layout_marginRight="8dp"
+            android:layout_marginLeft="8dp"
             android:layout_width="match_parent"
             android:layout_height="1px"
             android:background="@color/white"/>
@@ -82,7 +84,7 @@
     <TextView
         android:id="@+id/tv_register"
         android:layout_marginBottom="10dp"
-        android:text="注册并登陆"
+        android:text="别点这，会崩"
         android:layout_marginRight="20dp"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
