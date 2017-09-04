@@ -33,9 +33,9 @@ public class AdvertiseViewHolder extends RecyclerView.ViewHolder {
     Spinner srPoint;
     @Bind(R.id.sr_weight)
     Spinner srWeight;
-    public String dormitory;
-    public String point;
-    public String weight;
+    public String dormitory ;
+    public String point ;
+    public String weight ;
 
     public AdvertiseViewHolder(View itemView) {
         super(itemView);
@@ -46,6 +46,7 @@ public class AdvertiseViewHolder extends RecyclerView.ViewHolder {
     }
     public List<ExpressHelp> screenData(List<ExpressHelp> express){
         List<ExpressHelp> list = new ArrayList<>();
+
         for (ExpressHelp expres : express) {
             if (!TextUtils.isEmpty(dormitory)){
                 if (!expres.getDormitory().equals(dormitory)){
@@ -94,6 +95,7 @@ public class AdvertiseViewHolder extends RecyclerView.ViewHolder {
         srDormitory.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
                 switch (position){
                     case 0:dormitory = "";break;
                     case 1:dormitory = "1-5栋";break;
@@ -106,6 +108,7 @@ public class AdvertiseViewHolder extends RecyclerView.ViewHolder {
                     case 8:dormitory = "33-35栋";break;
 
                 }
+
                 adapter.setList(screenData(oldList),false);
             }
 

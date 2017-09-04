@@ -78,7 +78,7 @@
         <activity android:name=".activity.LoginActivity" />
         <activity android:name=".activity.SettingActivity" />
         <activity android:name=".activity.NoticeActivity" />
-        <activity android:name=".activity.PasswordActivity"></activity>
+        <activity android:name=".activity.PasswordActivity"/>
     </application>
 
 </manifest>
