@@ -2,6 +2,7 @@ package com.express.adapter;
 
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Spinner;
@@ -47,6 +48,7 @@ public class AdvertiseViewHolder extends RecyclerView.ViewHolder {
     public List<ExpressHelp> screenData(List<ExpressHelp> express){
         List<ExpressHelp> list = new ArrayList<>();
         for (ExpressHelp expres : express) {
+            Log.i("TAG",dormitory+"   "+"  "+point+"  "+weight);
             if (!TextUtils.isEmpty(dormitory)){
                 if (!expres.getDormitory().equals(dormitory)){
                     continue;
