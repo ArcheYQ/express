@@ -49,6 +49,7 @@ public class AdvertiseViewHolder extends RecyclerView.ViewHolder {
         List<ExpressHelp> list = new ArrayList<>();
 
         for (ExpressHelp expres : express) {
+            Log.i("TAG",dormitory+"   "+"  "+point+"  "+weight);
             if (!TextUtils.isEmpty(dormitory)){
                 if (!expres.getDormitory().equals(dormitory)){
                     continue;
