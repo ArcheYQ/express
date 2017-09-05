@@ -32,13 +32,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
         <TextView
+            android:maxEms="15"
+            android:maxLines="1"
+            android:ellipsize="end"
             android:id="@+id/tv_con_sms"
             android:textColor="@color/black"
             android:layout_marginBottom="10dp"
             android:layout_alignParentBottom="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="小仙女在吗？"/>
+            android:text="小仙女在吗？小仙女在吗？小仙女在吗？小仙女在吗？"/>
         <TextView
             android:visibility="gone"
             android:textSize="12sp"
