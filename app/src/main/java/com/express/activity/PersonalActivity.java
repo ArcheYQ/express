@@ -446,6 +446,7 @@ public class PersonalActivity extends BaseActivity {
         User bmobUser = User.getCurrentUser(User.class);// 获得当前登陆的用户
         User newUser = new User(bmobUser.getSum(),bmobUser.getHelpSum());
         newUser.setHeadPicThumb(path);
+        newUser.setHeadPic(path);
         newUser.update(bmobUser.getObjectId(), new UpdateListener() {
             @Override
             public void done(BmobException e) {

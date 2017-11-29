@@ -26,7 +26,7 @@ public class FirstActivity extends AppCompatActivity {
                 if (User.getCurrentUser(User.class) !=null){
                     startActivity(new Intent(FirstActivity.this, MainActivity.class));
                 }else {
-                    startActivity(new Intent(FirstActivity.this, LoginActivity.class));
+                    startActivity(new Intent(FirstActivity.this, SecondLoginActivity.class));
                 }
                 finish();
             }

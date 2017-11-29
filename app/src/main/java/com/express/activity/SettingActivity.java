@@ -56,7 +56,7 @@ public class SettingActivity extends BaseActivity {
             case R.id.tv_exit_login:
                 BmobUser.logOut();
                 finishAll();
-                startActivity(new Intent(this,LoginActivity.class));
+                startActivity(new Intent(this,SecondLoginActivity.class));
                 finish();
                 break;
         }

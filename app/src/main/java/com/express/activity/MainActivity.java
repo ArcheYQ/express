@@ -36,6 +36,8 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import cn.bmob.v3.BmobUser;
+import cn.bmob.v3.exception.BmobException;
+import cn.bmob.v3.listener.FetchUserInfoListener;
 import de.hdodenhof.circleimageview.CircleImageView;
 import qiu.niorgai.StatusBarCompat;
 
@@ -155,12 +157,29 @@ public class MainActivity extends BaseActivity {
         } else {
             tvSlideNickname.setText(user.getNickname());
         }
-        Glide.with(this)
-                .load(user.getHeadPicThumb())
-                .into(cvSlideTou);
+        if (TextUtils.isEmpty(user.getHeadPicThumb())){
+            Glide.with(this)
+                    .load("http://bmob-cdn-13164.b0.upaiyun.com/2017/09/04/b1b8899cc0934c899bc86f88bafdf302.jpg")
+                    .into(cvSlideTou);
+        }else{
+            Glide.with(this)
+                    .load(user.getHeadPicThumb())
+                    .into(cvSlideTou);
+        }
 
     }
+    private void fetchUserInfo() {
+        BmobUser.fetchUserJsonInfo(new FetchUserInfoListener<String>() {
+            @Override
+            public void done(String s, BmobException e) {
+                if (e == null) {
 
+                } else {
+
+                }
+            }
+        });
+    }
     @OnClick({R.id.cv_slide_tou, R.id.tv_slide_nickname, R.id.ll_address, R.id.fb_publish, R.id.ll_feedback, R.id.iv_PersonInformation, R.id.iv_sms, R.id.ll_going, R.id.ll_my_record, R.id.iv_setting, R.id.ll_reputation})
     public void onViewClicked(View view) {
         switch (view.getId()) {
