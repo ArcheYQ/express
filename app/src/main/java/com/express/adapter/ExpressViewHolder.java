@@ -109,7 +109,7 @@ public class ExpressViewHolder extends RecyclerView.ViewHolder {
                 ivWater6.setVisibility(View.VISIBLE);
                 break;
         }
-
+//
         itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

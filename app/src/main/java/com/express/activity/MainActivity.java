@@ -152,6 +152,7 @@ public class MainActivity extends BaseActivity {
 
     private void initData() {
         User user = BmobUser.getCurrentUser(User.class);
+        fetchUserInfo();
         if (TextUtils.isEmpty(user.getNickname())) {
             tvSlideNickname.setText("编辑昵称");
         } else {
