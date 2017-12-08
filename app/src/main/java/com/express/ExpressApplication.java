@@ -20,7 +20,7 @@ import cn.bmob.v3.Bmob;
 
 public class ExpressApplication extends Application {
 
-    private static Context context;
+    private static Context context;//
 
     public static Context getContext() {
         return context;
