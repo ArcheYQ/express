@@ -18,8 +18,7 @@ import cn.bmob.v3.BmobUser;
 
 
 public class AddAddressActivity extends BaseActivity {
-///
-    @Bind(R.id.tb_new_address)
+////(R.id.tb_new_address)
     Toolbar tbNewAddress;
     @Bind(R.id.et_add_address_name)
     EditText etAddAddressName;
