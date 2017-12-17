@@ -28,7 +28,7 @@ public class AddAddressActivity extends BaseActivity {
     EditText etAddressAddAccuracy;
     @Bind(R.id.btn_add_address)
     Button btnAddAddress;
-//
+
     private boolean isEdit = false;
 
     private Address address;
