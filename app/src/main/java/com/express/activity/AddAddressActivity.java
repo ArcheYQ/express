@@ -49,7 +49,7 @@ public class AddAddressActivity extends BaseActivity {
             btnAddAddress.setText("修改");
         }
     }
-
+//
     @OnClick(R.id.btn_add_address)
     public void onViewClicked() {
         if (isEdit){
