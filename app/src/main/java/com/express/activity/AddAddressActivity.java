@@ -48,7 +48,7 @@ public class AddAddressActivity extends BaseActivity {
             etAddAddressTelephone.setText(address.getPhoneNumber());
             btnAddAddress.setText("修改");
         }
-    }//
+    }////
 
     @OnClick(R.id.btn_add_address)
     public void onViewClicked() {
