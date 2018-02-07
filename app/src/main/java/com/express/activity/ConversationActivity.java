@@ -107,7 +107,7 @@ public class ConversationActivity extends BaseActivity {
             startActivity(new Intent(this, FindActivity.class));
             finish();
             return true;
-        }
+        }//
 
         return super.onOptionsItemSelected(item);
     }
