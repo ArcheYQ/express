@@ -4,12 +4,12 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
@@ -27,7 +27,6 @@ import java.util.ArrayList;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import cn.bmob.v3.BmobUser;
 import cn.bmob.v3.datatype.BmobFile;
 import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.UpdateListener;
@@ -40,12 +39,10 @@ public class ImfamationActivity extends BaseActivity {
     ImageView ivPersonalBg;
     @Bind(R.id.cm_person)
     CircleImageView cmPerson;
-    @Bind(R.id.et_true_name)
-    EditText etTrueName;
+
     @Bind(R.id.et_student_id)
     EditText etStudentId;
-    @Bind(R.id.et_sex)
-    EditText etSex;
+
     @Bind(R.id.et_college)
     EditText etCollege;
     @Bind(R.id.et_class)
@@ -58,8 +55,13 @@ public class ImfamationActivity extends BaseActivity {
     Toolbar tbPersonal;
 
     public static final int REQUEST_CODE_AVATAR = 100;
+    @Bind(R.id.etv_true_name)
+    TextView etvTrueName;
+    @Bind(R.id.tv_sex)
+    TextView tvSex;
     private String cmUrl;
     public static final String AVATAR_FILE_NAME = "avatar.png";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,6 +69,9 @@ public class ImfamationActivity extends BaseActivity {
         ButterKnife.bind(this);
         setToolBar(R.id.tb_personal);
         Glide.with(this).load("http://bmob-cdn-13164.b0.upaiyun.com/2017/09/04/b1b8899cc0934c899bc86f88bafdf302.jpg").into(cmPerson);
+        Intent intent = getIntent();
+        tvSex.setText(intent.getStringExtra("idInfo_sex"));
+        etvTrueName.setText(intent.getStringExtra("idInfo_name"));
     }
 
     @Override
@@ -74,8 +79,6 @@ public class ImfamationActivity extends BaseActivity {
         getMenuInflater().inflate(R.menu.menu_finish, menu);
         return true;
     }
-
-
 
 
     @Override
@@ -115,6 +118,7 @@ public class ImfamationActivity extends BaseActivity {
             });
         }
     }
+
     public void updateHead() {
         User bmobUser = User.getCurrentUser(User.class);
         User user1 = new User();
@@ -142,15 +146,15 @@ public class ImfamationActivity extends BaseActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.finish) {
-            if (!etClass.getText().toString().isEmpty() && !etSex.getText().toString().isEmpty() && !etIntroduction.getText().toString().isEmpty() && !etTrueName.getText().toString().isEmpty() && !etStudentId.getText().toString().isEmpty() && !etCollege.getText().toString().isEmpty()) {
-            User bmobUser = User.getCurrentUser(User.class);
-            User user= new User();
-            user.setClassName(etClass.getText().toString());
-            user.setGender(etSex.getText().toString());
-            user.setProfile(etIntroduction.getText().toString());
-            user.setName(etTrueName.getText().toString());
-            user.setNickname(etStudentId.getText().toString());
-            user.setDepName(etCollege.getText().toString());
+            if (!etClass.getText().toString().isEmpty()  && !etIntroduction.getText().toString().isEmpty()  && !etStudentId.getText().toString().isEmpty() && !etCollege.getText().toString().isEmpty()) {
+                User bmobUser = User.getCurrentUser(User.class);
+                User user = new User();
+                user.setClassName(etClass.getText().toString());
+                user.setGender(tvSex.getText().toString());
+                user.setProfile(etIntroduction.getText().toString());
+                user.setName(etvTrueName.getText().toString());
+                user.setNickname(etStudentId.getText().toString());
+                user.setDepName(etCollege.getText().toString());
                 user.update(bmobUser.getObjectId(), new UpdateListener() {
                     @Override
                     public void done(BmobException e) {
@@ -174,7 +178,7 @@ public class ImfamationActivity extends BaseActivity {
 
     @OnClick(R.id.cm_person)
     public void onViewClicked() {
-        if(getCcamra()&&getStorage()){
+        if (getCcamra() && getStorage()) {
             SImagePicker
                     .from(this)
                     .pickMode(SImagePicker.MODE_AVATAR)
@@ -183,7 +187,7 @@ public class ImfamationActivity extends BaseActivity {
                             CacheManager.getInstance().getImageInnerCache()
                                     .getAbsolutePath(AVATAR_FILE_NAME))
                     .forResult(REQUEST_CODE_AVATAR);
-        }else{
+        } else {
             Toast.makeText(mActivity, "请给予权限", Toast.LENGTH_SHORT).show();
         }
 

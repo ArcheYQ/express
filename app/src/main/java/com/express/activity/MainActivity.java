@@ -152,7 +152,7 @@ public class MainActivity extends BaseActivity {
 
     private void initData() {
         User user = BmobUser.getCurrentUser(User.class);
-        fetchUserInfo();
+//        fetchUserInfo();
         if (TextUtils.isEmpty(user.getNickname())) {
             tvSlideNickname.setText("编辑昵称");
         } else {
@@ -169,18 +169,18 @@ public class MainActivity extends BaseActivity {
         }
 
     }
-    private void fetchUserInfo() {
-        BmobUser.fetchUserJsonInfo(new FetchUserInfoListener<String>() {
-            @Override
-            public void done(String s, BmobException e) {
-                if (e == null) {
-
-                } else {
-
-                }
-            }
-        });
-    }
+//    private void fetchUserInfo() {
+//        BmobUser.fetchUserJsonInfo(new FetchUserInfoListener<String>() {
+//            @Override
+//            public void done(String s, BmobException e) {
+//                if (e == null) {
+//
+//                } else {
+//
+//                }
+//            }
+//        });
+//    }
     @OnClick({R.id.cv_slide_tou, R.id.tv_slide_nickname, R.id.ll_address, R.id.fb_publish, R.id.ll_feedback, R.id.iv_PersonInformation, R.id.iv_sms, R.id.ll_going, R.id.ll_my_record, R.id.iv_setting, R.id.ll_reputation})
     public void onViewClicked(View view) {
         switch (view.getId()) {

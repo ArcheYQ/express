@@ -82,7 +82,10 @@
         <activity android:name=".activity.NoticeActivity" />
         <activity android:name=".activity.PasswordActivity" />
         <activity android:name=".activity.SecondLoginActivity" />
-        <activity android:name=".activity.ImfamationActivity"></activity>
+        <activity android:name=".activity.ImfamationActivity" />
+        <activity android:name=".activity.LogActivity" />
+        <activity android:name=".activity.LogininActivity" />
+        <activity android:name=".activity.IDcardActivity"></activity>
     </application>
 
 </manifest>
